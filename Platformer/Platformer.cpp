@@ -58,8 +58,10 @@ int main()
 	//load player
 	sf::Texture t0;
 	t0.loadFromFile("sprite_forwards.png");
-	t0 = createMask(t0);
-	Player player(t0, sf::Vector2f(window.getSize()) / 2.f);
+	//t0 = createMask(t0);
+
+	sf::IntRect player_still(5, 5, 51, 55);
+	
 
 	//Player projectile
 	sf::Texture t1;
@@ -120,7 +122,6 @@ int main()
 	sf::Texture sprite_table;
 	sprite_table.loadFromFile("sprite_table.png");
 	sprite_table = createMask(sprite_table);
-	player.sprite.setTexture(sprite_table);
 
 	sf::Texture explosion;
 	explosion.loadFromFile("type_C.png");
@@ -132,8 +133,10 @@ int main()
 	playerDirections.push_back(Animation(sprite_table, 5, 230, 53, 57, 10, 0.2));//down
 	playerDirections.push_back(Animation(sprite_table, 5, 290, 53, 52, 10, 0.2));//left
 	playerDirections.push_back(Animation(sprite_table, 5, 401, 53, 57, 10, 0.2));//right
-	player.sprite.setTextureRect(playerDirections[1].frames[0]);
+	//player.sprite.setTextureRect(playerDirections[1].frames[0]);
 
+	//--------------------PLAYER--------------------//
+	Player player(sprite_table, sf::Vector2f(window.getSize()) / 2.f);
 
 	sf::Vector2f mousePos;
 	sf::Vector2f playerCenter;
@@ -271,6 +274,10 @@ int main()
 				else if (right && lastKey == 0x44)
 				{
 					player.sprite.setTextureRect(playerDirections[3].frames[(int)animationFrame]);
+				}
+				if (!up && !down && !right && !left)
+				{
+					player.sprite.setTextureRect(player_still);
 				}
 				up = false;
 				down = false;
