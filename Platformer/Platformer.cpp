@@ -176,7 +176,7 @@ int main()
 		spawnTime = spawnClock.getElapsedTime().asMilliseconds();
 		deathTime = deathClock.getElapsedTime().asMilliseconds();
 		boostTime = boostClock.getElapsedTime().asMilliseconds();
-		boostCooldown = boostCooldownClock.getElapsedTime().asMilliseconds();
+		boostCooldown = boostCooldownClock.getElapsedTime().asMilliseconds(); //cooldown for boosting
 		triggerTime = triggerClock.getElapsedTime().asMilliseconds();
 
 		if (boostCooldown < 5000 and first)
@@ -303,6 +303,8 @@ int main()
 				left = false;
 				right = false;
 				animationFrame += playerDirections[0].speed;
+
+
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 				{
 					if (shootTime >= 100)
@@ -318,41 +320,64 @@ int main()
 						shootClock.restart();
 					}
 				}
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && triggerTime > 100)
+
+
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && triggerTime > 200)
 				{
+					boostClock.restart();
 					boost = !boost;
 					triggerClock.restart();
 				}
 
 				if (boost) {
-					//player is going normal speed and boost is off cooldown
-					if (boostCooldown >= 5000)
+					if(boostCooldown > 5000)
 					{
-						//check if you have any boost time left
 						if (boostTime < 3000)
 						{
-							std::cout << "boost" << '\n';
 							player.maxSpeed = playerSpeed * 2;
-							first = false;
+
 						}
 						else
 						{
-							boostCooldownClock.restart();
-							boostClock.restart();
 							player.maxSpeed = playerSpeed;
 						}
 					}
-					else
-					{
-						boostClock.restart();
-						boost = false;
-					}
+					//player is going normal speed and boost is off cooldown
+					//if (boostCooldown >= 5000)
+					//{
+					//	std::cout << "Cooldown Up" << '\n';
+					//	//check if you have any boost time left
+					//	if (boostTime < 3000)
+					//	{
+					//		std::cout << "boosting" << '\n';
+					//		player.maxSpeed = playerSpeed * 2;
+					//		first = false;
+					//	}
+					//	else
+					//	{
+					//		std::cout << "Out of time" << '\n';
+					//		boostCooldownClock.restart();
+					//		boostClock.restart();
+					//		player.maxSpeed = playerSpeed;
+					//		boost = false;
+					//	}
+					//}
+					//else
+					//{
+					//	std::cout << "On cooldown" << '\n';
+					//	boostClock.restart();
+					//	boost = false;
+					//}
+				}
+				else
+				{
+					player.maxSpeed = playerSpeed;
 				}
 			}
 
 			if (enemies.size() < 10 && spawnTime > 500)
 			{
-				int randx, randy;
+				/*int randx, randy;
 				do
 				{
 					randx = rand() % window.getSize().x;
@@ -360,7 +385,7 @@ int main()
 				} while (std::abs(player.sprite.getPosition().x - randx <= 200) && std::abs(player.sprite.getPosition().y - randy <= 200));
 
 				enemies.push_back(Enemy(t3, sf::Vector2f(randx, randy)));
-				spawnClock.restart();
+				spawnClock.restart();*/
 			}
 
 			window.clear();
