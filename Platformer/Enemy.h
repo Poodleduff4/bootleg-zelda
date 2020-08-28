@@ -13,16 +13,17 @@ struct Enemy
 	sf::Vector2f velocity;
 	int health;
 	float maxSpeed = 5;
-	Enemy(Enemy &e) {
+	/*Enemy(Enemy &e) {
 		texture = e.texture;
 		sprite = e.sprite;
 		velocity = e.velocity;
 		health = e.health;
-	}
-	Enemy(sf::Texture& t, sf::Vector2f pos, int h) {
-		sprite.setPosition(pos.x, pos.y);
+	}*/
+
+	Enemy(sf::Texture& t, int h) {
 		sprite.setTexture(t);
-		sprite.setOrigin(31, 21);
+		sprite.setOrigin(t.getSize().x / 2, t.getSize().y / 2);
+		health = h;
 	}
 
 	void update() {

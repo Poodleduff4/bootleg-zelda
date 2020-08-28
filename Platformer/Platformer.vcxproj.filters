@@ -29,9 +29,6 @@
     <Image Include="player_projectile.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Enemy.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="cursor.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -54,6 +51,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="sprite_table.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Enemy1.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

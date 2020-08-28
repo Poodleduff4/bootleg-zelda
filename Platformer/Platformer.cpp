@@ -10,8 +10,6 @@
 #include "Animation.h"
 #include "player.h"
 
-#define M_PI 3.14159
-
 
 
 
@@ -39,6 +37,7 @@ std::vector<Projectile> playerProjectiles;
 std::vector<Enemy> enemies;
 std::vector<AnimationEvent> animations;
 std::vector<Animation> playerDirections;
+std::vector<sf::Texture> enemyDifficulty;
 
 
 
@@ -52,7 +51,7 @@ int main()
 	sf::Event event;
 	window.setMouseCursorVisible(false);
 	bool paused = false;
-	int score = 0;
+	int score = 90;
 
 	//-------------------TEXTURES-------------------//
 	//load player
@@ -74,10 +73,16 @@ int main()
 	sf::Sprite background(t2);
 
 	//Enemy
-	std::vector<Enemy> enemyDifficulty;
+
 	sf::Texture t3;
-	t3.loadFromFile("Enemy.png");
-	//enemyDifficulty.push_back();
+	t3.loadFromFile("Enemy1.png");
+	sf::Texture t3v2;
+	t3v2.loadFromFile("Enemy2.png");
+	sf::Texture t3v3;
+	t3v3.loadFromFile("Enemy3.png");
+	enemyDifficulty.push_back(t3);
+	enemyDifficulty.push_back(t3v2);
+	enemyDifficulty.push_back(t3v3);
 
 	//Cursor
 	sf::Texture t4;
@@ -127,6 +132,11 @@ int main()
 	sf::Texture explosion;
 	explosion.loadFromFile("type_C.png");
 
+	sf::Texture boss_texture;
+	sf::Texture boss_shoot_texture;
+	boss_texture.loadFromFile("boss1.png");
+	boss_shoot_texture.loadFromFile("boss2.png");
+
 	//------------------ANIMATIONS------------------//
 	Animation sWalk(sprite_table, 5, 230, 53, 57, 10, 0.5);
 	Animation sExplosion(explosion, 0, 0, 256, 256, 48, 0.5);
@@ -162,11 +172,13 @@ int main()
 	float animationFrame = 0.f;
 	bool first = true;
 	bool boost = false;
+	bool boss = false;
 
 
 	for (size_t i = 0; i < 5; i++)
 	{
-		Enemy enemy(t3, sf::Vector2f(rand() % window.getSize().x, rand() % window.getSize().y), 1);
+		Enemy enemy(t3, 1);
+		enemy.sprite.setPosition(sf::Vector2f(rand() % window.getSize().x, rand() % window.getSize().y));
 		enemies.push_back(enemy);
 	}
 
@@ -353,33 +365,6 @@ int main()
 						boost = false;
 						boostCooldownClock.restart().asMilliseconds();
 					}
-
-					//player is going normal speed and boost is off cooldown
-					//if (boostCooldown >= 5000)
-					//{
-					//	std::cout << "Cooldown Up" << '\n';
-					//	//check if you have any boost time left
-					//	if (boostTime < 3000)
-					//	{
-					//		std::cout << "boosting" << '\n';
-					//		player.maxSpeed = playerSpeed * 2;
-					//		first = false;
-					//	}
-					//	else
-					//	{
-					//		std::cout << "Out of time" << '\n';
-					//		boostCooldownClock.restart();
-					//		boostClock.restart();
-					//		player.maxSpeed = playerSpeed;
-					//		boost = false;
-					//	}
-					//}
-					//else
-					//{
-					//	std::cout << "On cooldown" << '\n';
-					//	boostClock.restart();
-					//	boost = false;
-					//}
 				}
 				else
 				{
@@ -387,17 +372,27 @@ int main()
 				}
 			}
 
-			if (enemies.size() < 10 && spawnTime > 500)
+			if (enemies.size() < 10 && spawnTime > 500 && !boss)
 			{
-				/*int randx, randy;
+				int randx, randy, randDifficulty;
 				do
 				{
 					randx = rand() % window.getSize().x;
 					randy = rand() % window.getSize().y;
+					randDifficulty = rand() % enemyDifficulty.size();
 				} while (std::abs(player.sprite.getPosition().x - randx <= 200) && std::abs(player.sprite.getPosition().y - randy <= 200));
 
-				enemies.push_back(Enemy(t3, sf::Vector2f(randx, randy)));
-				spawnClock.restart();*/
+				Enemy enemy(enemyDifficulty[randDifficulty], randDifficulty + 1);
+				enemy.sprite.setPosition(randx, randy);
+				enemies.push_back(enemy);
+				spawnClock.restart();
+
+				if (score == 100)
+				{
+					boss = true;
+					Enemy boss(boss_texture, 100);
+					enemies.push_back(boss);
+				}
 			}
 
 			window.clear();
@@ -442,9 +437,13 @@ int main()
 						{
 							//animations.push_back(AnimationEvent(sExplosion, enemies[j].sprite.getPosition().x, enemies[j].sprite.getPosition().y));
 							animations.push_back(AnimationEvent(sExplosion, enemies[j].sprite.getPosition().x, enemies[j].sprite.getPosition().y));
-							enemies.erase(enemies.begin() + j);
+							enemies[j].health--;
+							if (enemies[j].health == 0)
+							{
+								enemies.erase(enemies.begin() + j);
+								score++;
+							}
 							killProjectile = true;
-							score++;
 						}
 					}
 				}
