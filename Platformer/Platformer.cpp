@@ -74,9 +74,10 @@ int main()
 	sf::Sprite background(t2);
 
 	//Enemy
+	std::vector<Enemy> enemyDifficulty;
 	sf::Texture t3;
 	t3.loadFromFile("Enemy.png");
-	t3 = createMask(t3);
+	//enemyDifficulty.push_back();
 
 	//Cursor
 	sf::Texture t4;
@@ -165,7 +166,7 @@ int main()
 
 	for (size_t i = 0; i < 5; i++)
 	{
-		Enemy enemy(t3, sf::Vector2f(rand() % window.getSize().x, rand() % window.getSize().y));
+		Enemy enemy(t3, sf::Vector2f(rand() % window.getSize().x, rand() % window.getSize().y), 1);
 		enemies.push_back(enemy);
 	}
 
@@ -324,24 +325,35 @@ int main()
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && triggerTime > 200)
 				{
-					boostClock.restart();
-					boost = !boost;
+					if (boost == true) //turn boost off
+					{
+						boostCooldownClock.restart().asMilliseconds();
+						std::cout << "boost off" << '\n';
+						boost = false;
+					}
+					else if (boostCooldownClock.getElapsedTime().asMilliseconds() > 5000) //turn boost on
+					{
+						std::cout << "boost on" << '\n';
+						boostClock.restart();
+						boost = true;
+					}
 					triggerClock.restart();
 				}
 
 				if (boost) {
-					if(boostCooldown > 5000)
-					{
-						if (boostTime < 3000)
-						{
-							player.maxSpeed = playerSpeed * 2;
 
-						}
-						else
-						{
-							player.maxSpeed = playerSpeed;
-						}
+					if (boostClock.getElapsedTime().asMilliseconds() < 3000)
+					{
+						player.maxSpeed = playerSpeed * 2;
 					}
+					else
+					{
+						std::cout << "boost off time up" << '\n';
+						player.maxSpeed = playerSpeed;
+						boost = false;
+						boostCooldownClock.restart().asMilliseconds();
+					}
+
 					//player is going normal speed and boost is off cooldown
 					//if (boostCooldown >= 5000)
 					//{

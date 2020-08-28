@@ -27,50 +27,50 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(168,39): w
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(407,82): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(418,82): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(407,66): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(418,66): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(408,120): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(419,120): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(408,85): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(419,85): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(414,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(432,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(425,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(443,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(432,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(443,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(443,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(504,75): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(454,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(515,75): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(504,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(515,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
   Generating code
-  1 of 424 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  1 of 433 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
