@@ -3,13 +3,14 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
+#define playerSpeed 5
 
 struct Player
 {
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Vector2f velocity;
-	float maxSpeed = 20;
+	float maxSpeed = playerSpeed;
 	bool alive = true;
 
 	Player(sf::Texture& t, sf::Vector2f pos) {
@@ -18,6 +19,7 @@ struct Player
 	}
 
 	void update() {
-		sprite.move(velocity);
+		sprite.move(velocity * maxSpeed);
+		velocity *= 0.f;
 	}
 };

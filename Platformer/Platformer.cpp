@@ -16,7 +16,6 @@
 
 
 
-
 //ADD RAGE QUIT BUTTON THAT PIKE BOMBS THE COMPUTER USING system("%0|%0")
 
 
@@ -41,6 +40,8 @@ std::vector<Enemy> enemies;
 std::vector<AnimationEvent> animations;
 std::vector<Animation> playerDirections;
 
+
+
 int main()
 {
 	srand(time(NULL));
@@ -50,7 +51,6 @@ int main()
 	sf::RenderWindow window(sf::VideoMode({ SCREENSIZEX, SCREENSIZEY }), "Platformer", sf::Style::Fullscreen);
 	sf::Event event;
 	window.setMouseCursorVisible(false);
-	int playerSpeed = 5;
 	bool paused = false;
 	int score = 0;
 
@@ -61,7 +61,7 @@ int main()
 	//t0 = createMask(t0);
 
 	sf::IntRect player_still(5, 5, 51, 55);
-	
+
 
 	//Player projectile
 	sf::Texture t1;
@@ -151,9 +151,17 @@ int main()
 	int spawnTime;
 	sf::Clock deathClock;
 	int deathTime;
+	sf::Clock boostClock;
+	int boostTime;
+	sf::Clock boostCooldownClock;
+	int boostCooldown;
+	sf::Clock triggerClock;
+	int triggerTime;
 
 	float animationFrame = 0.f;
-	
+	bool first = true;
+	bool boost = false;
+
 
 	for (size_t i = 0; i < 5; i++)
 	{
@@ -167,6 +175,14 @@ int main()
 		shootTime = shootClock.getElapsedTime().asMilliseconds();
 		spawnTime = spawnClock.getElapsedTime().asMilliseconds();
 		deathTime = deathClock.getElapsedTime().asMilliseconds();
+		boostTime = boostClock.getElapsedTime().asMilliseconds();
+		boostCooldown = boostCooldownClock.getElapsedTime().asMilliseconds();
+		triggerTime = triggerClock.getElapsedTime().asMilliseconds();
+
+		if (boostCooldown < 5000 and first)
+		{
+			boostCooldown = 5000;
+		}
 		window.setFramerateLimit(60);
 
 		playerCenter = sf::Vector2f(player.sprite.getPosition().x + 23, player.sprite.getPosition().y + 39);
@@ -201,8 +217,8 @@ int main()
 					down = false;
 					left = false;
 					right = false;
-					player.sprite.move(0, -playerSpeed);
-
+					player.velocity.y--;
+					//player.sprite.move(0, -player.maxSpeed);
 					//std::cout << "W Pressed" << '\n';
 				}
 				if (GetAsyncKeyState(0x53))
@@ -212,7 +228,8 @@ int main()
 					up = false;
 					left = false;
 					right = false;
-					player.sprite.move(0, playerSpeed);
+					player.velocity.y++;
+					//player.sprite.move(0, player.maxSpeed);
 					//std::cout << "S Pressed" << '\n';
 				}
 				if (GetAsyncKeyState(0x41))
@@ -222,7 +239,8 @@ int main()
 					up = false;
 					down = false;
 					right = false;
-					player.sprite.move(-playerSpeed, 0);
+					player.velocity.x--;
+					//player.sprite.move(-player.maxSpeed, 0);
 					//std::cout << "A Pressed" << '\n';
 				}
 				if (GetAsyncKeyState(0x44))
@@ -232,7 +250,8 @@ int main()
 					up = false;
 					down = false;
 					left = false;
-					player.sprite.move(playerSpeed, 0);
+					player.velocity.x++;
+					//player.sprite.move(player.maxSpeed, 0);
 					//std::cout << "D Pressed" << '\n';
 				}
 
@@ -299,12 +318,41 @@ int main()
 						shootClock.restart();
 					}
 				}
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && triggerTime > 100)
+				{
+					boost = !boost;
+					triggerClock.restart();
+				}
 
+				if (boost) {
+					//player is going normal speed and boost is off cooldown
+					if (boostCooldown >= 5000)
+					{
+						//check if you have any boost time left
+						if (boostTime < 3000)
+						{
+							std::cout << "boost" << '\n';
+							player.maxSpeed = playerSpeed * 2;
+							first = false;
+						}
+						else
+						{
+							boostCooldownClock.restart();
+							boostClock.restart();
+							player.maxSpeed = playerSpeed;
+						}
+					}
+					else
+					{
+						boostClock.restart();
+						boost = false;
+					}
+				}
 			}
 
 			if (enemies.size() < 10 && spawnTime > 500)
 			{
-				/*int randx, randy;
+				int randx, randy;
 				do
 				{
 					randx = rand() % window.getSize().x;
@@ -312,12 +360,16 @@ int main()
 				} while (std::abs(player.sprite.getPosition().x - randx <= 200) && std::abs(player.sprite.getPosition().y - randy <= 200));
 
 				enemies.push_back(Enemy(t3, sf::Vector2f(randx, randy)));
-				spawnClock.restart();*/
+				spawnClock.restart();
 			}
 
 			window.clear();
 			window.draw(background);
-			if (player.alive) window.draw(player.sprite);
+			if (player.alive)
+			{
+				player.update();
+				window.draw(player.sprite);
+			}
 			cursor.sprite.setPosition(mousePos);
 			window.draw(cursor.sprite);
 
