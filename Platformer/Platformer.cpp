@@ -401,8 +401,7 @@ int main()
 				player.update();
 				window.draw(player.sprite);
 			}
-			cursor.sprite.setPosition(mousePos);
-			window.draw(cursor.sprite);
+			
 
 			//player enemy collisions
 			for (size_t i = 0; i < enemies.size(); i++)
@@ -537,6 +536,7 @@ int main()
 			window.draw(restart_button);
 			window.draw(quit_button);
 
+			cursor.sprite.setPosition(mousePos);
 			window.draw(cursor.sprite);
 
 		}
