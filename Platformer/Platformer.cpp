@@ -51,7 +51,7 @@ int main()
 	sf::Event event;
 	window.setMouseCursorVisible(false);
 	bool paused = false;
-	int score = 90;
+	int score = 0;
 
 	//-------------------TEXTURES-------------------//
 	//load player
@@ -197,7 +197,6 @@ int main()
 			boostCooldown = 5000;
 		}
 		window.setFramerateLimit(60);
-
 		playerCenter = sf::Vector2f(player.sprite.getPosition().x + 23, player.sprite.getPosition().y + 39);
 		mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
@@ -221,7 +220,7 @@ int main()
 		if (!paused)
 		{
 
-			UINT lastKey;
+			int lastKey;
 			if (player.alive) {
 				if (GetAsyncKeyState(0x57))
 				{
