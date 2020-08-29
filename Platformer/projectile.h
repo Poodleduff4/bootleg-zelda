@@ -15,6 +15,13 @@ public:
 	Projectile(sf::Texture& t, sf::Vector2f pos) {
 		sprite.setPosition(pos.x, pos.y);
 		sprite.setTexture(t);
+		sprite.setOrigin(t.getSize().x / 2, t.getSize().y / 2);
+	}
+
+	Projectile(sf::IntRect rect, sf::Vector2f pos, sf::Texture& energyBall) {
+		sprite.setTexture(energyBall);
+		sprite.setTextureRect(rect);
+		sprite.setOrigin(sprite.getTexture()->getSize().x / 2, sprite.getTexture()->getSize().y / 2);
 	}
 
 	void update() {

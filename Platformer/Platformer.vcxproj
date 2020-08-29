@@ -122,6 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,11 +150,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Platformer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="boss1.png" />
+    <Image Include="boss2.png" />
     <Image Include="cursor.png" />
     <Image Include="Enemy1.png" />
+    <Image Include="energy_ball.png" />
     <Image Include="pause_screen.png" />
     <Image Include="quit1.png" />
     <Image Include="quit2.png" />
@@ -168,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="boss.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="cursor.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="player.h" />

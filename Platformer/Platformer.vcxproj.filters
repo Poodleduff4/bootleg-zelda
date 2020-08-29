@@ -18,6 +18,9 @@
     <ClCompile Include="Platformer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="sprite table.jfif">
@@ -56,6 +59,15 @@
     <Image Include="Enemy1.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="boss1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="boss2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="energy_ball.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="projectile.h">
@@ -74,6 +86,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="boss.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

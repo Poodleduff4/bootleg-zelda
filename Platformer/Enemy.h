@@ -4,19 +4,19 @@
 #include <Windows.h>
 #include <SFML/Graphics.hpp>
 #include <math.h>
+#include <string.h>
 
 
-	/*Enemy(Enemy &e) {
-		texture = e.texture;
-		sprite = e.sprite;
-		velocity = e.velocity;
-		health = e.health;
-	}*/
+/*Enemy(Enemy &e) {
+	texture = e.texture;
+	sprite = e.sprite;
+	velocity = e.velocity;
+	health = e.health;
+}*/
 
 class Enemy
 {
 public:
-	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Vector2f velocity;
 	int health;
