@@ -5,8 +5,10 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
 
-struct Cursor
+
+class Cursor
 {
+public:
 	sf::Texture texture;
 	sf::Sprite sprite;
 

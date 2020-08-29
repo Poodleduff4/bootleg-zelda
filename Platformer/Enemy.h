@@ -6,19 +6,21 @@
 #include <math.h>
 
 
-struct Enemy
-{
-	sf::Texture texture;
-	sf::Sprite sprite;
-	sf::Vector2f velocity;
-	int health;
-	float maxSpeed = 5;
 	/*Enemy(Enemy &e) {
 		texture = e.texture;
 		sprite = e.sprite;
 		velocity = e.velocity;
 		health = e.health;
 	}*/
+
+class Enemy
+{
+public:
+	sf::Texture texture;
+	sf::Sprite sprite;
+	sf::Vector2f velocity;
+	int health;
+	float maxSpeed = 5;
 
 	Enemy(sf::Texture& t, int h) {
 		sprite.setTexture(t);

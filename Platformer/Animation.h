@@ -5,11 +5,13 @@
 #include <Windows.h>
 
 
-struct Animation
+class Animation
 {
+public:
     float frame, speed;
     sf::Sprite sprite;
     std::vector<sf::IntRect> frames;
+
     Animation() {}
 
     Animation(sf::Texture& t, int x, int y, int w, int h, int count, float spd) {
@@ -18,7 +20,7 @@ struct Animation
 
         for (size_t i = 0; i < count; i++)
             frames.push_back(sf::IntRect(x + i * w, y, w, h));
-        
+
         sprite.setTexture(t);
         sprite.setOrigin(w / 2, h / 2);
         sprite.setTextureRect(frames[0]);
@@ -37,13 +39,14 @@ struct Animation
     }
 };
 
-struct AnimationEvent
+class AnimationEvent
 {
+public:
     float x, y, dx, dy, R, angle;
     bool life;
     Animation anim;
 
-    AnimationEvent(Animation &a, int X, int Y) {
+    AnimationEvent(Animation& a, int X, int Y) {
         anim = a;
         x = X;
         y = Y;

@@ -5,8 +5,10 @@
 #include <Windows.h>
 #define playerSpeed 5
 
-struct Player
+
+class Player
 {
+public:
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Vector2f velocity;
