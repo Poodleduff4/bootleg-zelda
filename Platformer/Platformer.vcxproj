@@ -167,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="boss.h" />
     <ClInclude Include="cursor.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="player.h" />

@@ -22,6 +22,8 @@ public:
 	int health;
 	float maxSpeed = 5;
 
+	Enemy() {}
+
 	Enemy(sf::Texture& t, int h) {
 		sprite.setTexture(t);
 		sprite.setOrigin(t.getSize().x / 2, t.getSize().y / 2);

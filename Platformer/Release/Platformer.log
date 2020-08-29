@@ -1,10 +1,10 @@
 ﻿  Platformer.cpp
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(27,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(29,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(27,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(29,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
@@ -14,12 +14,12 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(25,35): warni
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(25,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(51,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(52,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(46,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(143,76): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(47,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(144,76): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(145,76): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(146,76): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(181,77): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(147,76): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(182,77): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -28,7 +28,7 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(181,77): w
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(181,48): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(182,48): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -37,8 +37,8 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(181,48): w
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(385,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(385,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(386,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(386,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(413,82): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
@@ -71,18 +71,18 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(438,87): w
               T=float
           ]
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(453,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(514,75): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(516,75): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(514,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(516,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
   Generating code
-  0 of 487 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  2 of 490 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

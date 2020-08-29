@@ -9,6 +9,7 @@
 #include "cursor.h"
 #include "Animation.h"
 #include "player.h"
+#include "boss.h"
 
 
 
@@ -389,7 +390,7 @@ int main()
 				if (score == 100)
 				{
 					boss = true;
-					Enemy boss(boss_texture, 100);
+					Boss boss(boss_texture, 100);
 					enemies.push_back(boss);
 				}
 			}
@@ -482,6 +483,8 @@ int main()
 					animations.erase(animations.begin() + i);
 				}
 			}
+			cursor.sprite.setPosition(mousePos);
+			window.draw(cursor.sprite);
 		}
 		else
 		{
