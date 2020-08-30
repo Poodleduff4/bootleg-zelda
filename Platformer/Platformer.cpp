@@ -4,6 +4,7 @@
 #include <math.h>
 #include <vector>
 #include <time.h>
+#include <algorithm>
 #include "projectile.h"
 #include "Enemy.h"
 #include "cursor.h"
@@ -42,7 +43,9 @@ std::vector<AnimationEvent> animations;
 std::vector<Animation> playerDirections;
 std::vector<sf::Texture> enemyDifficulty;
 
-
+sf::Vector2f mousePos;
+sf::Vector2f playerCenter;
+int frameCount = 0;
 
 int main()
 {
@@ -162,12 +165,12 @@ int main()
 	Boss boss(boss_texture, 100);
 	bool boss_alive = false;
 
-	sf::Vector2f mousePos;
-	sf::Vector2f playerCenter;
+
 	sf::Vector2f aimDir;
 	sf::Vector2f aimDirNorm;
 
 	bool up, down, left, right;
+	
 
 	sf::Clock timer;
 
@@ -235,7 +238,7 @@ int main()
 		}
 		if (!paused)
 		{
-
+			
 			int lastKey;
 			if (player.alive) {
 				if (GetAsyncKeyState(0x57))
@@ -326,7 +329,7 @@ int main()
 				{
 					player.sprite.setTextureRect(player_still);
 				}
-				up = false;
+				up = false;;
 				down = false;
 				left = false;
 				right = false;
@@ -343,7 +346,7 @@ int main()
 						//std::cout << aimDirNorm.x << " " << aimDirNorm.y << '\n';
 
 						Projectile projectile(t1, playerCenter);
-						projectile.velocity = aimDirNorm * projectile.maxSpeed;
+						projectile.velocity = aimDirNorm;
 						playerProjectiles.push_back(projectile);
 						shootClock.restart();
 					}
@@ -411,8 +414,8 @@ int main()
 				{
 					randx = rand() % window.getSize().x;
 					randy = rand() % window.getSize().y;
-					std::cout << randx << " | " << randy << '\n';
-				} while (std::abs(player.sprite.getPosition().x - (randx + boss.sprite.getTextureRect().width) >= 600) && std::abs(player.sprite.getPosition().y - (randy + boss.sprite.getTextureRect().height) >= 600));
+				} while (std::abs(player.sprite.getPosition().x - randx <= 200) && std::abs(player.sprite.getPosition().y - randy <= 200));
+				boss.sprite.setPosition(randx, randy);
 
 				for (size_t i = 0; i < enemies.size(); i++)
 				{
@@ -465,6 +468,7 @@ int main()
 					}
 				}
 
+				//projectile and boss collision
 				if (boss_alive)
 				{
 					if (Collision::PixelPerfectTest(playerProjectiles[i].sprite, boss.sprite))
@@ -488,6 +492,7 @@ int main()
 					playerProjectiles.erase(playerProjectiles.begin() + i);
 			}
 
+			//player and boss collision
 			if (boss_alive)
 			{
 				if (player.alive)
@@ -501,12 +506,14 @@ int main()
 						{
 							std::cout << "dead\n";
 							boss_alive = false;
+							boss.reset(boss_texture);
 							animations.push_back(AnimationEvent(sExplosion, boss.sprite.getPosition().x, boss.sprite.getPosition().y));
 						}
 					}
 				}
 			}
 
+			//move enemies towards the player
 			for (int i = 0; i < enemies.size(); i++)
 			{
 				enemies[i].velocity = getVectorPath(enemies[i].sprite.getPosition(), playerCenter);
@@ -518,17 +525,43 @@ int main()
 				}
 			}
 
+			//player.alive = true;
+
+			//boss shooting
 			if (boss_alive)
 			{
+				int waitFrames;
+				sf::Vector2f bossShootPos = sf::Vector2f(boss.facingRight ? boss.sprite.getPosition().x + 142 : boss.sprite.getPosition().x - 142,
+					boss.facingRight ? boss.sprite.getPosition().y + -64 : boss.sprite.getPosition().y - 64);
 				boss.velocity = getVectorPath(boss.sprite.getPosition(), playerCenter);
-				if (boss.shoot)
+
+				if (boss.shotCharge)
 				{
-					sf::Vector2f bossShootPos = sf::Vector2f(boss.facingRight ? boss.sprite.getPosition().x + 250 : boss.sprite.getPosition().x - 250,
-						boss.facingRight ? boss.sprite.getPosition().y + 78 : boss.sprite.getPosition().y - 78);
-					Projectile bossProjectile(Projectile(sEnergyBall.frames[9], bossShootPos, energyBall_texture));
+					animations.push_back(AnimationEvent(sEnergyBall, bossShootPos.x, bossShootPos.y));
+					boss.shotCharge = false;
+					boss.shoot = true;
+					boss.reloadTime.restart();
+					waitFrames = 9 * (1 / 0.2) + frameCount;
+					
+					std::cout << frameCount << "   " << waitFrames << '\n';
+				}
+				if (boss.shoot && frameCount >= waitFrames)
+				{
+					Projectile bossProjectile(Projectile(sEnergyBall.frames[8], bossShootPos, energyBall_texture));
+					bossProjectile.velocity = getVectorPath(bossShootPos, playerCenter);
+					std::cout << boss.velocity.x << " | " << boss.velocity.y << '\n';
+					enemyProjectiles.push_back(bossProjectile);
+					boss.shoot = false;
+					boss.reloadTime.restart();
+				}
+
+				/*else
+				{
+					std::cout << "boss shoot" << '\n';
+					Projectile bossProjectile(Projectile(sEnergyBall.frames[8], bossShootPos, energyBall_texture));
 					bossProjectile.velocity = getVectorPath(playerCenter, bossShootPos);
 					enemyProjectiles.push_back(bossProjectile);
-				}
+				}*/
 
 			}
 
@@ -548,6 +581,7 @@ int main()
 			for (size_t i = 0; i < enemyProjectiles.size(); i++)
 			{
 				enemyProjectiles[i].update();
+				window.draw(enemyProjectiles[i].sprite);
 			}
 
 			for (size_t i = 0; i < enemies.size(); i++)
@@ -635,6 +669,7 @@ int main()
 
 		}
 		window.display();
+		frameCount++;
 	}
 }
 
@@ -650,7 +685,7 @@ sf::Texture createMask(sf::Texture& texture) {
 	return tex;
 }
 
-sf::Vector2f getVectorPath(sf::Vector2f playerPos, sf::Vector2f otherPos) {
-	sf::Vector2f dir = otherPos - playerPos;
+sf::Vector2f getVectorPath(sf::Vector2f to, sf::Vector2f from) {
+	sf::Vector2f dir = from - to;
 	return dir / std::sqrt(std::pow(dir.x, 2) + std::pow(dir.y, 2));
 }

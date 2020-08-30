@@ -13,18 +13,20 @@ public:
 	sf::Vector2f velocity;
 	float maxSpeed = 20;
 	Projectile(sf::Texture& t, sf::Vector2f pos) {
-		sprite.setPosition(pos.x, pos.y);
+		sprite.setPosition(pos);
 		sprite.setTexture(t);
 		sprite.setOrigin(t.getSize().x / 2, t.getSize().y / 2);
 	}
 
-	Projectile(sf::IntRect rect, sf::Vector2f pos, sf::Texture& energyBall) {
+	Projectile(sf::IntRect &rect, sf::Vector2f pos, sf::Texture& energyBall) {
 		sprite.setTexture(energyBall);
 		sprite.setTextureRect(rect);
-		sprite.setOrigin(sprite.getTexture()->getSize().x / 2, sprite.getTexture()->getSize().y / 2);
+		sprite.setOrigin(sprite.getTextureRect().width/2, sprite.getTextureRect().height / 2);
+		sprite.setPosition(pos);
+		//maxSpeed = -maxSpeed;
 	}
 
 	void update() {
-		sprite.move(velocity);
+		sprite.move(velocity * maxSpeed);
 	}
 };
