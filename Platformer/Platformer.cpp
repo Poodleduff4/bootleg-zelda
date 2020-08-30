@@ -12,6 +12,8 @@
 #include "player.h"
 #include "boss.h"
 #include "Collision.h"
+#include "health_bar.h"
+#include "Textures.h"
 
 
 
@@ -46,131 +48,61 @@ std::vector<sf::Texture> enemyDifficulty;
 sf::Vector2f mousePos;
 sf::Vector2f playerCenter;
 int frameCount = 0;
+int gameDifficulty = 1;
+Boss boss(boss_texture, 100);
+bool boss_alive = false;
+
+sf::RenderWindow window(sf::VideoMode({ 1900, 1000 }), "Platformer", sf::Style::Fullscreen);
 
 int main()
 {
 	srand(time(NULL));
-	const int SCREENSIZEX = 1900;
-	const int SCREENSIZEY = 1000;
 
-	sf::RenderWindow window(sf::VideoMode({ SCREENSIZEX, SCREENSIZEY }), "Platformer", sf::Style::Fullscreen);
+
 	sf::Event event;
+	initializeTextures(window);
 	window.setMouseCursorVisible(false);
 	bool paused = false;
 	int score = 0;
 	int kills = 90;
-	int gameDifficulty = 1;
-
-	//-------------------TEXTURES-------------------//
-	//load player
-	sf::Texture t0;
-	t0.loadFromFile("sprite_forwards.png");
-	//t0 = createMask(t0);
-
-	sf::IntRect player_still(5, 5, 51, 55);
 
 
-	//Player projectile
-	sf::Texture t1;
-	t1.loadFromFile("player_projectile.png");
-	t1 = createMask(t1);
-
-	//Background image
-	sf::Texture t2;
-	t2.loadFromFile("background.jpg");
+	//--------------------SPRITES--------------------// initialized in Textures.h
 	sf::Sprite background(t2);
 
-	//Enemy
-
-	sf::Texture t3;
-	t3.loadFromFile("Enemy1.png");
-	sf::Texture t3v2;
-	t3v2.loadFromFile("Enemy2.png");
-	sf::Texture t3v3;
-	t3v3.loadFromFile("Enemy3.png");
-	enemyDifficulty.push_back(t3);
-	enemyDifficulty.push_back(t3v2);
-	enemyDifficulty.push_back(t3v3);
-
-	//Cursor
-	sf::Texture t4;
-	t4.loadFromFile("cursor.png");
-	t4 = createMask(t4);
-	Cursor cursor(t4);
-
-	//Paused Screen
-	sf::Texture t5;
-	t5.loadFromFile("pause_screen.png");
 	sf::Sprite pause_screen(t5);
 
-	//Resume Button
-	sf::Texture t6v1;
-	sf::Texture t6v2;
-	t6v1.loadFromFile("resume1.png");
-	t6v2.loadFromFile("resume2.png");
-	t6v1 = createMask(t6v1);
-	t6v2 = createMask(t6v2);
 	sf::Sprite resume_button(t6v1);
 	resume_button.setPosition(720, 450);
 
-	//Quit Button
-	sf::Texture t7v1;
-	sf::Texture t7v2;
-	t7v1.loadFromFile("quit1.png");
-	t7v2.loadFromFile("quit2.png");
-	t7v1 = createMask(t7v1);
-	t7v2 = createMask(t7v2);
 	sf::Sprite quit_button(t7v1);
 	quit_button.setPosition(720, 750);
 
-	//Restart Button
-	sf::Texture t8v1;
-	sf::Texture t8v2;
-	t8v1.loadFromFile("restart1.png");
-	t8v2.loadFromFile("restart2.png");
-	t8v1 = createMask(t8v1);
-	t8v2 = createMask(t8v2);
 	sf::Sprite restart_button(t8v1);
 	restart_button.setPosition(720, 600);
 
-	sf::Texture sprite_table;
-	sprite_table.loadFromFile("sprite_table.png");
-	sprite_table = createMask(sprite_table);
+	sf::Sprite bossHealthBarFull(bossHealthBarMax_texture);
+	bossHealthBarFull.setOrigin(bossHealthBarMax_texture.getSize().x / 2, 0);
+	bossHealthBarFull.setPosition(window.getSize().x / 2, 10);
 
-	sf::Texture explosion;
-	explosion.loadFromFile("type_C.png");
-
-	sf::Texture boss_texture;
-	sf::Texture boss_shoot_texture;
-	boss_texture.loadFromFile("boss1.png");
-	boss_shoot_texture.loadFromFile("boss2.png");
-
-	sf::Texture energyBall_texture;
-	energyBall_texture.loadFromFile("energyBall_straight.png");
-
-	//------------------ANIMATIONS------------------//
-	Animation sWalk(sprite_table, 5, 230, 53, 57, 10, 0.5);
-	Animation sExplosion(explosion, 0, 0, 256, 256, 48, 0.5);
-	Animation sEnergyBall(energyBall_texture, 20, 40, 110, 90, 9, 0.2);
-	playerDirections.push_back(Animation(sprite_table, 5, 344, 53, 57, 10, 0.2));//up
-	playerDirections.push_back(Animation(sprite_table, 5, 230, 53, 57, 10, 0.2));//down
-	playerDirections.push_back(Animation(sprite_table, 5, 290, 53, 52, 10, 0.2));//left
-	playerDirections.push_back(Animation(sprite_table, 5, 401, 53, 57, 10, 0.2));//right
 	//player.sprite.setTextureRect(playerDirections[1].frames[0]);
 
 	//--------------------PLAYER--------------------//
 	Player player(sprite_table, sf::Vector2f(window.getSize()) / 2.f);
 
 	//---------------------Boss---------------------//
-	Boss boss(boss_texture, 100);
-	bool boss_alive = false;
+
+	HealthBar bossHealthBar(bossHealthBar_texture);
+
+
+	Cursor cursor(t4);
 
 
 	sf::Vector2f aimDir;
 	sf::Vector2f aimDirNorm;
 
 	bool up, down, left, right;
-	
+
 
 	sf::Clock timer;
 
@@ -238,7 +170,7 @@ int main()
 		}
 		if (!paused)
 		{
-			
+
 			int lastKey;
 			if (player.alive) {
 				if (GetAsyncKeyState(0x57))
@@ -406,7 +338,7 @@ int main()
 				spawnClock.restart();
 			}
 
-			if (kills % 100 == 0 && !boss_alive)
+			if (kills % 5 == 0 && !boss_alive)
 			{
 				int randx, randy;
 				boss_alive = true;
@@ -415,11 +347,15 @@ int main()
 					randx = rand() % window.getSize().x;
 					randy = rand() % window.getSize().y;
 				} while (std::abs(player.sprite.getPosition().x - randx <= 200) && std::abs(player.sprite.getPosition().y - randy <= 200));
+
+				boss = Boss(boss_texture, 100 * gameDifficulty);
+				boss.sprite.setTexture(boss_shoot_texture);
 				boss.sprite.setPosition(randx, randy);
+				bossHealthBar = HealthBar(bossHealthBar_texture);
 
 				for (size_t i = 0; i < enemies.size(); i++)
 				{
-					animations.push_back(AnimationEvent(sExplosion, enemies[i].sprite.getPosition().x, enemies[i].sprite.getPosition().y));
+					animations.push_back(AnimationEvent(sExplosion_2, enemies[i].sprite.getPosition().x, enemies[i].sprite.getPosition().y));
 				}
 				enemies.clear();
 			}
@@ -434,8 +370,8 @@ int main()
 				if (player.sprite.getGlobalBounds().intersects(enemies[i].sprite.getGlobalBounds()))
 				{
 					player.alive = false;
-					animations.push_back(AnimationEvent(sExplosion, playerCenter.x, playerCenter.y));
-					animations.push_back(AnimationEvent(sExplosion, enemies[i].sprite.getPosition().x, enemies[i].sprite.getPosition().y));
+					animations.push_back(AnimationEvent(sExplosion_3, playerCenter.x, playerCenter.y));
+					animations.push_back(AnimationEvent(sExplosion_3, enemies[i].sprite.getPosition().x, enemies[i].sprite.getPosition().y));
 					enemies.erase(enemies.begin() + i);
 				}
 			}
@@ -457,12 +393,17 @@ int main()
 					if (playerProjectiles[i].sprite.getGlobalBounds().intersects(enemies[j].sprite.getGlobalBounds()))
 					{
 						//animations.push_back(AnimationEvent(sExplosion, enemies[j].sprite.getPosition().x, enemies[j].sprite.getPosition().y));
-						animations.push_back(AnimationEvent(sEnergyBall, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
+
 						enemies[j].health--;
 						if (enemies[j].health == 0)
 						{
+							animations.push_back(AnimationEvent(sExplosion_2, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
 							enemies.erase(enemies.begin() + j);
 							kills++; score++;
+						}
+						else
+						{
+							animations.push_back(AnimationEvent(sExplosion_3, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
 						}
 						killProjectile = true;
 					}
@@ -474,13 +415,21 @@ int main()
 					if (Collision::PixelPerfectTest(playerProjectiles[i].sprite, boss.sprite))
 					{
 						boss.health--;
-						animations.push_back(AnimationEvent(sExplosion, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
+						bossHealthBar.update(boss.health, boss.maxHealth);
+						animations.push_back(AnimationEvent(sExplosion_3, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
 						if (boss.health < 1)
 						{
 							boss_alive = false;
 							boss.reset(boss_texture);
 							gameDifficulty++;
-							animations.push_back(AnimationEvent(sExplosion, boss.sprite.getPosition().x, boss.sprite.getPosition().y));
+							boss.bossDifficulty++;
+							for (size_t j = 0; j < 5; j++)
+							{
+								for (size_t k = 0; k < 5; k++)
+								{
+									animations.push_back(AnimationEvent(sExplosion_3, boss.sprite.getPosition().x + 20 * (j-2), boss.sprite.getPosition().y + 20 * (k-2)));
+								}
+							}
 							kills++;
 							score++;
 						}
@@ -492,6 +441,16 @@ int main()
 					playerProjectiles.erase(playerProjectiles.begin() + i);
 			}
 
+			for (size_t i = 0; i < enemyProjectiles.size(); i++)
+			{
+				if (enemyProjectiles[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
+				{
+					player.alive = false;
+					animations.push_back(AnimationEvent(sExplosion_2, player.sprite.getPosition().x, player.sprite.getPosition().y));
+					enemyProjectiles.erase(enemyProjectiles.begin() + i);
+				}
+			}
+
 			//player and boss collision
 			if (boss_alive)
 			{
@@ -501,13 +460,14 @@ int main()
 					{
 						player.alive = false;
 						boss.health--;
-						animations.push_back(AnimationEvent(sExplosion, playerCenter.x, playerCenter.y));
+						bossHealthBar.update(boss.health, boss.maxHealth);
+						animations.push_back(AnimationEvent(sExplosion_3, playerCenter.x, playerCenter.y));
 						if (boss.health < 1)
 						{
 							std::cout << "dead\n";
 							boss_alive = false;
 							boss.reset(boss_texture);
-							animations.push_back(AnimationEvent(sExplosion, boss.sprite.getPosition().x, boss.sprite.getPosition().y));
+							animations.push_back(AnimationEvent(sExplosion_3, boss.sprite.getPosition().x, boss.sprite.getPosition().y));
 						}
 					}
 				}
@@ -537,32 +497,22 @@ int main()
 
 				if (boss.shotCharge)
 				{
+
 					animations.push_back(AnimationEvent(sEnergyBall, bossShootPos.x, bossShootPos.y));
 					boss.shotCharge = false;
 					boss.shoot = true;
 					boss.reloadTime.restart();
-					waitFrames = 9 * (1 / 0.2) + frameCount;
-					
-					std::cout << frameCount << "   " << waitFrames << '\n';
+					waitFrames = (9 * (1 / 0.2) + frameCount) / (2000 / boss.fireRate);
+
 				}
 				if (boss.shoot && frameCount >= waitFrames)
 				{
 					Projectile bossProjectile(Projectile(sEnergyBall.frames[8], bossShootPos, energyBall_texture));
 					bossProjectile.velocity = getVectorPath(bossShootPos, playerCenter);
-					std::cout << boss.velocity.x << " | " << boss.velocity.y << '\n';
 					enemyProjectiles.push_back(bossProjectile);
 					boss.shoot = false;
 					boss.reloadTime.restart();
 				}
-
-				/*else
-				{
-					std::cout << "boss shoot" << '\n';
-					Projectile bossProjectile(Projectile(sEnergyBall.frames[8], bossShootPos, energyBall_texture));
-					bossProjectile.velocity = getVectorPath(playerCenter, bossShootPos);
-					enemyProjectiles.push_back(bossProjectile);
-				}*/
-
 			}
 
 			window.clear();
@@ -591,6 +541,8 @@ int main()
 			if (boss_alive)
 			{
 				boss.update(boss_texture, boss_shoot_texture);
+				window.draw(bossHealthBarFull);
+				window.draw(bossHealthBar.sprite);
 				window.draw(boss.sprite);
 			}
 

@@ -154,6 +154,7 @@
     <ClCompile Include="Platformer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="background.jpg" />
     <Image Include="boss1.png" />
     <Image Include="boss2.png" />
     <Image Include="cursor.png" />
@@ -168,6 +169,8 @@
     <Image Include="sprite_forwards.png" />
     <Image Include="player_projectile.png" />
     <Image Include="sprite_table.png" />
+    <Image Include="type_A.png" />
+    <Image Include="type_B.png" />
     <Image Include="type_C.png" />
   </ItemGroup>
   <ItemGroup>
@@ -176,8 +179,10 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="cursor.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="health_bar.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="projectile.h" />
+    <ClInclude Include="Textures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
