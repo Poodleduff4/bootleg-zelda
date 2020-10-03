@@ -13,6 +13,7 @@ public:
 	sf::Vector2f velocity;
 	float maxSpeed = 20;
 	Projectile(sf::Texture& t, sf::Vector2f pos) {
+
 		sprite.setPosition(pos);
 		sprite.setTexture(t);
 		sprite.setOrigin(t.getSize().x / 2, t.getSize().y / 2);

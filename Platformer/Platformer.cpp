@@ -15,28 +15,13 @@
 #include "health_bar.h"
 #include "Textures.h"
 
-
-
-
-
 //ADD RAGE QUIT BUTTON THAT PIKE BOMBS THE COMPUTER USING system("%0|%0")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-sf::Texture createMask(sf::Texture& tex);
+sf::Texture createMask(sf::Texture &tex);
 sf::Vector2f getVectorPath(sf::Vector2f playerPos, sf::Vector2f otherPos);
+sf::Vector2f getQuadrant(float angle);
+sf::Vector2f multiplyVector(sf::Vector2f left, sf::Vector2f right);
+
 
 std::vector<Projectile> playerProjectiles;
 std::vector<Projectile> enemyProjectiles;
@@ -52,20 +37,18 @@ int gameDifficulty = 1;
 Boss boss(boss_texture, 100);
 bool boss_alive = false;
 
-sf::RenderWindow window(sf::VideoMode({ 1900, 1000 }), "Platformer", sf::Style::Fullscreen);
+sf::RenderWindow window(sf::VideoMode({1900, 1000}), "Platformer", sf::Style::Fullscreen);
 
 int main()
 {
 	srand(time(NULL));
-
 
 	sf::Event event;
 	initializeTextures(window);
 	window.setMouseCursorVisible(false);
 	bool paused = false;
 	int score = 0;
-	int kills = 90;
-
+	int kills = 0;
 
 	//--------------------SPRITES--------------------// initialized in Textures.h
 	sf::Sprite background(t2);
@@ -94,15 +77,12 @@ int main()
 
 	HealthBar bossHealthBar(bossHealthBar_texture);
 
-
 	Cursor cursor(t4);
-
 
 	sf::Vector2f aimDir;
 	sf::Vector2f aimDirNorm;
 
 	bool up, down, left, right;
-
 
 	sf::Clock timer;
 
@@ -124,8 +104,6 @@ int main()
 	float animationFrame = 0.f;
 	bool first = true;
 	bool boost = false;
-
-
 
 	for (size_t i = 0; i < 5; i++)
 	{
@@ -151,7 +129,8 @@ int main()
 		playerCenter = sf::Vector2f(player.sprite.getPosition().x + 23, player.sprite.getPosition().y + 39);
 		mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
-		if (animationFrame >= 10) animationFrame = 0;
+		if (animationFrame >= 10)
+			animationFrame = 0;
 
 		while (window.pollEvent(event))
 		{
@@ -172,7 +151,8 @@ int main()
 		{
 
 			int lastKey;
-			if (player.alive) {
+			if (player.alive)
+			{
 				if (GetAsyncKeyState(0x57))
 				{
 					lastKey = 0x57;
@@ -261,12 +241,12 @@ int main()
 				{
 					player.sprite.setTextureRect(player_still);
 				}
-				up = false;;
+				up = false;
+				;
 				down = false;
 				left = false;
 				right = false;
 				animationFrame += playerDirections[0].speed;
-
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 				{
@@ -283,7 +263,6 @@ int main()
 						shootClock.restart();
 					}
 				}
-
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && triggerTime > 200)
 				{
@@ -302,7 +281,8 @@ int main()
 					triggerClock.restart();
 				}
 
-				if (boost) {
+				if (boost)
+				{
 
 					if (boostClock.getElapsedTime().asMilliseconds() < 3000)
 					{
@@ -338,7 +318,7 @@ int main()
 				spawnClock.restart();
 			}
 
-			if (kills % 5 == 0 && !boss_alive)
+			if (kills % 20 == 0 && !boss_alive)
 			{
 				int randx, randy;
 				boss_alive = true;
@@ -360,9 +340,6 @@ int main()
 				enemies.clear();
 			}
 
-
-
-
 			//player enemy collisions
 			for (size_t i = 0; i < enemies.size(); i++)
 			{
@@ -376,7 +353,7 @@ int main()
 				}
 			}
 
-
+			//projectiles
 			for (int i = 0; i < playerProjectiles.size(); i++)
 			{
 				bool killProjectile = false;
@@ -399,7 +376,8 @@ int main()
 						{
 							animations.push_back(AnimationEvent(sExplosion_2, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
 							enemies.erase(enemies.begin() + j);
-							kills++; score++;
+							kills++;
+							score++;
 						}
 						else
 						{
@@ -420,16 +398,17 @@ int main()
 						if (boss.health < 1)
 						{
 							boss_alive = false;
-							boss.reset(boss_texture);
 							gameDifficulty++;
 							boss.bossDifficulty++;
-							for (size_t j = 0; j < 5; j++)
-							{
-								for (size_t k = 0; k < 5; k++)
-								{
-									animations.push_back(AnimationEvent(sExplosion_3, boss.sprite.getPosition().x + 20 * (j-2), boss.sprite.getPosition().y + 20 * (k-2)));
-								}
-							}
+							int numBulletsOnDeath = 10;
+							// for (int j = 1; j <= numBulletsOnDeath; j++)
+							// {
+							// 	Projectile projectile(energyBall_texture, boss.sprite.getPosition());
+							// 	float angle = 360 / numBulletsOnDeath * j;
+							// 	projectile.velocity = multiplyVector(getQuadrant(angle), getVectorPath(sf::Vector2f(boss.sprite.getPosition().x + std::sin(angle), boss.sprite.getPosition().y + std::cos(angle)), boss.sprite.getPosition()));
+							// 	enemyProjectiles.push_back(projectile);
+							// }
+							boss.reset(boss_texture);
 							kills++;
 							score++;
 						}
@@ -443,7 +422,7 @@ int main()
 
 			for (size_t i = 0; i < enemyProjectiles.size(); i++)
 			{
-				if (enemyProjectiles[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
+				if (Collision::PixelPerfectTest(player.sprite, enemyProjectiles[i].sprite) && player.alive)
 				{
 					player.alive = false;
 					animations.push_back(AnimationEvent(sExplosion_2, player.sprite.getPosition().x, player.sprite.getPosition().y));
@@ -492,7 +471,7 @@ int main()
 			{
 				int waitFrames;
 				sf::Vector2f bossShootPos = sf::Vector2f(boss.facingRight ? boss.sprite.getPosition().x + 142 : boss.sprite.getPosition().x - 142,
-					boss.facingRight ? boss.sprite.getPosition().y + -64 : boss.sprite.getPosition().y - 64);
+														 boss.facingRight ? boss.sprite.getPosition().y + -64 : boss.sprite.getPosition().y - 64);
 				boss.velocity = getVectorPath(boss.sprite.getPosition(), playerCenter);
 
 				if (boss.shotCharge)
@@ -503,7 +482,6 @@ int main()
 					boss.shoot = true;
 					boss.reloadTime.restart();
 					waitFrames = (9 * (1 / 0.2) + frameCount) / (2000 / boss.fireRate);
-
 				}
 				if (boss.shoot && frameCount >= waitFrames)
 				{
@@ -545,8 +523,6 @@ int main()
 				window.draw(bossHealthBar.sprite);
 				window.draw(boss.sprite);
 			}
-
-
 
 			for (size_t i = 0; i < animations.size(); i++)
 			{
@@ -618,14 +594,14 @@ int main()
 
 			cursor.sprite.setPosition(mousePos);
 			window.draw(cursor.sprite);
-
 		}
 		window.display();
 		frameCount++;
 	}
 }
 
-sf::Texture createMask(sf::Texture& texture) {
+sf::Texture createMask(sf::Texture &texture)
+{
 	sf::Image img;
 	sf::Texture tex;
 
@@ -637,7 +613,32 @@ sf::Texture createMask(sf::Texture& texture) {
 	return tex;
 }
 
-sf::Vector2f getVectorPath(sf::Vector2f to, sf::Vector2f from) {
+sf::Vector2f getVectorPath(sf::Vector2f to, sf::Vector2f from)
+{
 	sf::Vector2f dir = from - to;
-	return dir / std::sqrt(std::pow(dir.x, 2) + std::pow(dir.y, 2));
+	return dir / float(std::sqrt(std::pow(dir.x, 2) + std::pow(dir.y, 2)));
+}
+
+sf::Vector2f getQuadrant(float angle)
+{
+	if (angle <= 90)
+	{
+		return sf::Vector2f(-1, 1);
+	}
+	else if(angle <= 180){
+		return sf::Vector2f(-1, -1);
+	}
+	else if(angle <= 270){
+		return sf::Vector2f(-1, 1);
+	}
+	else if(angle <= 360){
+		sf::Vector2f(1, 1);
+	}
+}
+
+sf::Vector2f multiplyVector(sf::Vector2f left, sf::Vector2f right){
+	sf::Vector2f final;
+	final.x = left.x * right.x;
+	final.y = left.y * right.y;
+	return final;
 }

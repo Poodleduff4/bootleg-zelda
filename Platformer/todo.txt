@@ -1,0 +1,2 @@
+line 400: make boss shoot x # of projectiles in a circle around him
+take angles from 0-360 and get the projectile velocity from them
