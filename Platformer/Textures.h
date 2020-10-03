@@ -1,4 +1,4 @@
-#include "SFML/Graphics.hpp"
+ #include "SFML/Graphics.hpp"
 #include "Animation.h"
 #include "cursor.h"
 extern std::vector<sf::Texture> enemyDifficulty;
@@ -59,7 +59,7 @@ extern sf::Texture createMask(sf::Texture& texture);
 	//------------------ANIMATIONS------------------//
 	Animation sWalk(sprite_table, 5, 230, 53, 57, 10, 0.5);
 	Animation sEnergyBall(energyBall_texture, 20, 40, 110, 90, 9, 0.2);
-	Animation sExplosion_3(explosion, 0, 0, 256, 256, 48, 0.5);
+	Animation sExplosion_3(explosion, 0, 0, 256, 256, 48, 0.7);
 	Animation sExplosion_2(explosion2, 0, 0, 192, 192, 64, 0.5);
 	
 

@@ -22,7 +22,6 @@ sf::Vector2f getVectorPath(sf::Vector2f playerPos, sf::Vector2f otherPos);
 sf::Vector2f getQuadrant(float angle);
 sf::Vector2f multiplyVector(sf::Vector2f left, sf::Vector2f right);
 
-
 std::vector<Projectile> playerProjectiles;
 std::vector<Projectile> enemyProjectiles;
 std::vector<Enemy> enemies;
@@ -401,13 +400,16 @@ int main()
 							gameDifficulty++;
 							boss.bossDifficulty++;
 							int numBulletsOnDeath = 10;
-							// for (int j = 1; j <= numBulletsOnDeath; j++)
-							// {
-							// 	Projectile projectile(energyBall_texture, boss.sprite.getPosition());
-							// 	float angle = 360 / numBulletsOnDeath * j;
-							// 	projectile.velocity = multiplyVector(getQuadrant(angle), getVectorPath(sf::Vector2f(boss.sprite.getPosition().x + std::sin(angle), boss.sprite.getPosition().y + std::cos(angle)), boss.sprite.getPosition()));
-							// 	enemyProjectiles.push_back(projectile);
-							// }
+							for (int j = 1; j <= numBulletsOnDeath; j++)
+							{
+								Projectile projectile(sEnergyBall.frames[8], boss.sprite.getPosition(), energyBall_texture);
+								float angle = 360 / numBulletsOnDeath * j;
+								projectile.velocity = multiplyVector(getQuadrant(angle), getVectorPath(sf::Vector2f(boss.sprite.getPosition().x + std::sin(angle), boss.sprite.getPosition().y + std::cos(angle)), boss.sprite.getPosition())) / 5.f;
+								std::cout << angle << '\n';
+								std::cout << getQuadrant(angle).x << getQuadrant(angle).y << '\n';
+								std::cout << projectile.velocity.x << " | " << projectile.velocity.y << '\n';
+								enemyProjectiles.push_back(projectile);
+							}
 							boss.reset(boss_texture);
 							kills++;
 							score++;
@@ -485,7 +487,7 @@ int main()
 				}
 				if (boss.shoot && frameCount >= waitFrames)
 				{
-					Projectile bossProjectile(Projectile(sEnergyBall.frames[8], bossShootPos, energyBall_texture));
+					Projectile bossProjectile(sEnergyBall.frames[8], bossShootPos, energyBall_texture);
 					bossProjectile.velocity = getVectorPath(bossShootPos, playerCenter);
 					enemyProjectiles.push_back(bossProjectile);
 					boss.shoot = false;
@@ -625,18 +627,26 @@ sf::Vector2f getQuadrant(float angle)
 	{
 		return sf::Vector2f(-1, 1);
 	}
-	else if(angle <= 180){
+	else if (angle <= 180)
+	{
 		return sf::Vector2f(-1, -1);
 	}
-	else if(angle <= 270){
+	else if (angle <= 270)
+	{
 		return sf::Vector2f(-1, 1);
 	}
-	else if(angle <= 360){
-		sf::Vector2f(1, 1);
+	else if (angle <= 360)
+	{
+		return sf::Vector2f(1, 1);
+	}
+	else
+	{
+		return sf::Vector2f(0, 0);
 	}
 }
 
-sf::Vector2f multiplyVector(sf::Vector2f left, sf::Vector2f right){
+sf::Vector2f multiplyVector(sf::Vector2f left, sf::Vector2f right)
+{
 	sf::Vector2f final;
 	final.x = left.x * right.x;
 	final.y = left.y * right.y;
