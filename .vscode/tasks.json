@@ -10,6 +10,8 @@
             "-o",
             "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "-static",
+            "-static-libgcc",
+            "-static-libstdc++",
             "-std=c++14",
             "-I",
             "D:/SFML-2.5.1-mingw/include",

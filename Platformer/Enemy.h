@@ -21,6 +21,7 @@ public:
 	sf::Vector2f velocity;
 	int health;
 	float maxSpeed = 5;
+	bool alive = true;
 
 	Enemy() {}
 

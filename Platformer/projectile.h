@@ -3,6 +3,23 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
+#include "Enemy.h"
+#include "boss.h"
+#include "Animation.h"
+
+
+#include <vector>
+extern sf::Vector2f getVectorPath(sf::Vector2f, sf::Vector2f);
+extern std::vector<Enemy> enemies;
+
+int getQuadrant90(sf::Vector2f angle) {
+	if (angle.x < 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
 
 
 class Projectile
@@ -12,17 +29,33 @@ public:
 	sf::Sprite sprite;
 	sf::Vector2f velocity;
 	float maxSpeed = 20;
-	Projectile(sf::Texture& t, sf::Vector2f pos) {
+	int damage;
+	Animation anim;
+	
 
+
+	Projectile() {}
+
+	Projectile(sf::Texture& t, sf::Vector2f pos, int speed, Animation a) {
 		sprite.setPosition(pos);
 		sprite.setTexture(t);
 		sprite.setOrigin(t.getSize().x / 2, t.getSize().y / 2);
+		anim = a;
+		maxSpeed = speed;
 	}
 
-	Projectile(sf::IntRect &rect, sf::Vector2f pos, sf::Texture& energyBall) {
-		sprite.setTexture(energyBall);
+	Projectile(sf::Texture* t, sf::Vector2f pos, int speed, Animation a) {
+		sprite.setPosition(pos);
+		sprite.setTexture(*t);
+		sprite.setOrigin(t->getSize().x / 2, t->getSize().y / 2);
+		anim = a;
+		maxSpeed = speed;
+	}
+
+	Projectile(sf::IntRect& rect, sf::Vector2f pos, sf::Texture& t, int speed) {
+		sprite.setTexture(t);
 		sprite.setTextureRect(rect);
-		sprite.setOrigin(sprite.getTextureRect().width/2, sprite.getTextureRect().height / 2);
+		sprite.setOrigin(sprite.getTextureRect().width / 2, sprite.getTextureRect().height / 2);
 		sprite.setPosition(pos);
 		//maxSpeed = -maxSpeed;
 	}
@@ -31,3 +64,5 @@ public:
 		sprite.move(velocity * maxSpeed);
 	}
 };
+
+

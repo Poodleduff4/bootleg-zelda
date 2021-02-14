@@ -14,6 +14,7 @@
 #include "Collision.h"
 #include "health_bar.h"
 #include "Textures.h"
+#include "Homing.h"
 
 //ADD RAGE QUIT BUTTON THAT PIKE BOMBS THE COMPUTER USING system("%0|%0")
 
@@ -21,13 +22,17 @@ sf::Texture createMask(sf::Texture &tex);
 sf::Vector2f getVectorPath(sf::Vector2f playerPos, sf::Vector2f otherPos);
 sf::Vector2f getQuadrant(float angle);
 sf::Vector2f multiplyVector(sf::Vector2f left, sf::Vector2f right);
+Enemy* find_nearest_enemy(sf::Vector2f pos);
+void removeHomingMarkers(HomingTarget*);
 
 std::vector<Projectile> playerProjectiles;
+std::vector<Homing> homingProjectiles;
 std::vector<Projectile> enemyProjectiles;
 std::vector<Enemy> enemies;
 std::vector<AnimationEvent> animations;
 std::vector<Animation> playerDirections;
 std::vector<sf::Texture> enemyDifficulty;
+std::vector<HomingTarget> homingTargets;
 
 sf::Vector2f mousePos;
 sf::Vector2f playerCenter;
@@ -41,13 +46,12 @@ sf::RenderWindow window(sf::VideoMode({1900, 1000}), "Platformer", sf::Style::Fu
 int main()
 {
 	srand(time(NULL));
-
 	sf::Event event;
 	initializeTextures(window);
 	window.setMouseCursorVisible(false);
 	bool paused = false;
 	int score = 0;
-	int kills = 0;
+	int kills = 1;
 
 	//--------------------SPRITES--------------------// initialized in Textures.h
 	sf::Sprite background(t2);
@@ -72,6 +76,9 @@ int main()
 	//--------------------PLAYER--------------------//
 	Player player(sprite_table, sf::Vector2f(window.getSize()) / 2.f);
 
+	//--------------------Weapon--------------------//
+	player.weapon = &Weapons::classic;
+
 	//---------------------Boss---------------------//
 
 	HealthBar bossHealthBar(bossHealthBar_texture);
@@ -82,6 +89,7 @@ int main()
 	sf::Vector2f aimDirNorm;
 
 	bool up, down, left, right;
+	up = down = left = right = false;
 
 	sf::Clock timer;
 
@@ -100,9 +108,13 @@ int main()
 
 	sf::Clock bossShootTimer;
 
+	sf::Clock weaponSwitchClock;
+
 	float animationFrame = 0.f;
 	bool first = true;
 	bool boost = false;
+
+	int waitFrames;
 
 	for (size_t i = 0; i < 5; i++)
 	{
@@ -149,7 +161,7 @@ int main()
 		if (!paused)
 		{
 
-			int lastKey;
+			char lastKey;
 			if (player.alive)
 			{
 				if (GetAsyncKeyState(0x57))
@@ -241,25 +253,58 @@ int main()
 					player.sprite.setTextureRect(player_still);
 				}
 				up = false;
-				;
 				down = false;
 				left = false;
 				right = false;
 				animationFrame += playerDirections[0].speed;
 
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && shootTime >= player.weapon->firerate)
 				{
-					if (shootTime >= 100)
+					if (strcmp(player.weapon->type, "homing") != 0)
 					{
-						//vectors
-
 						aimDirNorm = getVectorPath(playerCenter, mousePos);
-						//std::cout << aimDirNorm.x << " " << aimDirNorm.y << '\n';
-
-						Projectile projectile(t1, playerCenter);
+						Projectile projectile(player.weapon->texture, playerCenter, player.weapon->speed, *player.weapon->animation);
 						projectile.velocity = aimDirNorm;
+						projectile.damage = player.weapon->damage;
 						playerProjectiles.push_back(projectile);
 						shootClock.restart();
+					}
+					else //homing projectile
+					{
+						Enemy* targetEnemy = find_nearest_enemy(mousePos);
+						if (targetEnemy != nullptr && !boss_alive)
+						{
+							aimDirNorm = getVectorPath(playerCenter, mousePos);
+
+							Homing homingProjectile(homingBullet_texture, playerCenter, targetEnemy, 15, *player.weapon->animation);
+							homingProjectile.velocity = aimDirNorm;
+							homingProjectile.damage = player.weapon->damage;
+
+							HomingTarget homingMarker(homingMarker_texture, targetEnemy);
+							homingProjectile.marker = homingMarker;
+
+							std::cout << "id " << homingMarker.id << '\n';
+							homingProjectiles.push_back(homingProjectile);
+							homingTargets.push_back(homingMarker);
+							shootClock.restart();
+						}
+						else if(boss_alive)
+						{
+							/*if (std::abs(pos.x - enemyPos.x) < min.x && std::abs(pos.y - enemyPos.y) < min.y)
+							{
+
+							}*/
+
+
+							aimDirNorm = getVectorPath(playerCenter, boss.sprite.getPosition());
+							Homing homingProjectile(homingBullet_texture, playerCenter, &boss, 15, *player.weapon->animation);
+							homingProjectile.velocity = aimDirNorm;
+							homingProjectile.damage = player.weapon->damage;
+							homingProjectiles.push_back(homingProjectile);
+							HomingTarget homingMarker(homingMarker_texture, &boss);
+							shootClock.restart();
+						}
+						std::cout << "shot\n";
 					}
 				}
 
@@ -278,6 +323,19 @@ int main()
 						boost = true;
 					}
 					triggerClock.restart();
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num1) && weaponSwitchClock.getElapsedTime().asMilliseconds() > 1000)
+				{
+					player.weapon = &Weapons::classic;
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num2) && weaponSwitchClock.getElapsedTime().asMilliseconds() > 1000)
+				{
+					player.weapon = &Weapons::electric;
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num3) && weaponSwitchClock.getElapsedTime().asMilliseconds() > 1000)
+				{
+					player.weapon = &Weapons::homingBullet;
 				}
 
 				if (boost)
@@ -301,7 +359,7 @@ int main()
 				}
 			}
 
-			if (enemies.size() < 10 && spawnTime > 500 && !boss_alive)
+			if (enemies.size() < 10 && spawnTime > 1000 && !boss_alive)
 			{
 				int randx, randy, randDifficulty;
 				do
@@ -348,6 +406,7 @@ int main()
 					player.alive = false;
 					animations.push_back(AnimationEvent(sExplosion_3, playerCenter.x, playerCenter.y));
 					animations.push_back(AnimationEvent(sExplosion_3, enemies[i].sprite.getPosition().x, enemies[i].sprite.getPosition().y));
+					//removeHomingMarkers(&enemies[i]);
 					enemies.erase(enemies.begin() + i);
 				}
 			}
@@ -368,19 +427,19 @@ int main()
 				{
 					if (playerProjectiles[i].sprite.getGlobalBounds().intersects(enemies[j].sprite.getGlobalBounds()))
 					{
-						//animations.push_back(AnimationEvent(sExplosion, enemies[j].sprite.getPosition().x, enemies[j].sprite.getPosition().y));
-
-						enemies[j].health--;
-						if (enemies[j].health == 0)
+						enemies[j].health-=playerProjectiles[i].damage;
+						if (enemies[j].health <= 0)
 						{
+							enemies[j].alive = false;
 							animations.push_back(AnimationEvent(sExplosion_2, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
+							//removeHomingMarkers(&enemies[j]);
 							enemies.erase(enemies.begin() + j);
 							kills++;
 							score++;
 						}
 						else
 						{
-							animations.push_back(AnimationEvent(sExplosion_3, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
+							animations.push_back(AnimationEvent(playerProjectiles[i].anim, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
 						}
 						killProjectile = true;
 					}
@@ -391,9 +450,9 @@ int main()
 				{
 					if (Collision::PixelPerfectTest(playerProjectiles[i].sprite, boss.sprite))
 					{
-						boss.health--;
+						boss.health-=playerProjectiles[i].damage;
 						bossHealthBar.update(boss.health, boss.maxHealth);
-						animations.push_back(AnimationEvent(sExplosion_3, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
+						animations.push_back(AnimationEvent(playerProjectiles[i].anim, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
 						if (boss.health < 1)
 						{
 							boss_alive = false;
@@ -402,13 +461,10 @@ int main()
 							int numBulletsOnDeath = 10;
 							for (int j = 1; j <= numBulletsOnDeath; j++)
 							{
-								Projectile projectile(sEnergyBall.frames[8], boss.sprite.getPosition(), energyBall_texture);
+								/*Projectile projectile(energyBall_projectile, boss.sprite.getPosition(), 20, *player.weapon->animation);
 								float angle = 360 / numBulletsOnDeath * j;
 								projectile.velocity = multiplyVector(getQuadrant(angle), getVectorPath(sf::Vector2f(boss.sprite.getPosition().x + std::sin(angle), boss.sprite.getPosition().y + std::cos(angle)), boss.sprite.getPosition())) / 5.f;
-								std::cout << angle << '\n';
-								std::cout << getQuadrant(angle).x << getQuadrant(angle).y << '\n';
-								std::cout << projectile.velocity.x << " | " << projectile.velocity.y << '\n';
-								enemyProjectiles.push_back(projectile);
+								enemyProjectiles.push_back(projectile);*/
 							}
 							boss.reset(boss_texture);
 							kills++;
@@ -432,6 +488,63 @@ int main()
 				}
 			}
 
+			//homing projectiles
+			for (int i = 0; i < homingProjectiles.size(); i++)
+			{
+				bool killProjectile = false;
+				homingProjectiles[i].update();
+				if (homingProjectiles[i].sprite.getPosition().x < 0 || homingProjectiles[i].sprite.getPosition().x > window.getSize().x ||
+					homingProjectiles[i].sprite.getPosition().y < 0 || homingProjectiles[i].sprite.getPosition().y > window.getSize().y)
+				{
+					killProjectile = true;
+				}
+				for (size_t j = 0; j < enemies.size(); j++)
+				{
+					if (homingProjectiles[i].sprite.getGlobalBounds().intersects(enemies[j].sprite.getGlobalBounds()))
+					{
+						enemies[j].health -= homingProjectiles[i].damage;
+						if (enemies[j].health <= 0)
+						{
+							animations.push_back(AnimationEvent(homingProjectiles[i].anim, homingProjectiles[i].sprite.getPosition().x, homingProjectiles[i].sprite.getPosition().y));
+							enemies.erase(enemies.begin() + j);
+							kills++;
+							score++;
+						}
+						else
+						{
+							animations.push_back(AnimationEvent(sExplosion_2, homingProjectiles[i].sprite.getPosition().x, homingProjectiles[i].sprite.getPosition().y));
+						}
+						killProjectile = true;
+					}
+				}
+				if(boss_alive)
+				{
+					if (homingProjectiles[i].sprite.getGlobalBounds().intersects(boss.sprite.getGlobalBounds()))
+					{
+						boss.health -= homingProjectiles[i].damage;
+						bossHealthBar.update(boss.health, boss.maxHealth);
+						animations.push_back(AnimationEvent(homingProjectiles[i].anim, homingProjectiles[i].sprite.getPosition().x, homingProjectiles[i].sprite.getPosition().y));
+						if (boss.health <= 0)
+						{
+							boss_alive = false;
+							gameDifficulty++;
+							boss.bossDifficulty++;
+							int numBulletsOnDeath = 10;
+							boss.reset(boss_texture);
+							kills++;
+							score++;
+						}
+						killProjectile = true;
+					}
+				}
+				if (killProjectile)
+				{
+					removeHomingMarkers(&homingProjectiles[i].marker);
+					homingProjectiles.erase(homingProjectiles.begin() + i);
+					std::cout << homingProjectiles[i].marker.numUpdates << '\n';
+
+				}
+			}
 			//player and boss collision
 			if (boss_alive)
 			{
@@ -471,7 +584,7 @@ int main()
 			//boss shooting
 			if (boss_alive)
 			{
-				int waitFrames;
+				
 				sf::Vector2f bossShootPos = sf::Vector2f(boss.facingRight ? boss.sprite.getPosition().x + 142 : boss.sprite.getPosition().x - 142,
 														 boss.facingRight ? boss.sprite.getPosition().y + -64 : boss.sprite.getPosition().y - 64);
 				boss.velocity = getVectorPath(boss.sprite.getPosition(), playerCenter);
@@ -487,7 +600,7 @@ int main()
 				}
 				if (boss.shoot && frameCount >= waitFrames)
 				{
-					Projectile bossProjectile(sEnergyBall.frames[8], bossShootPos, energyBall_texture);
+					Projectile bossProjectile(energyBall_projectile, bossShootPos, 15, sEnergyBall);
 					bossProjectile.velocity = getVectorPath(bossShootPos, playerCenter);
 					enemyProjectiles.push_back(bossProjectile);
 					boss.shoot = false;
@@ -514,6 +627,12 @@ int main()
 				window.draw(enemyProjectiles[i].sprite);
 			}
 
+			for (size_t i = 0; i < homingProjectiles.size(); i++)
+			{
+				homingProjectiles[i].update();
+				window.draw(homingProjectiles[i].sprite);
+			}
+
 			for (size_t i = 0; i < enemies.size(); i++)
 			{
 				window.draw(enemies[i].sprite);
@@ -524,6 +643,11 @@ int main()
 				window.draw(bossHealthBarFull);
 				window.draw(bossHealthBar.sprite);
 				window.draw(boss.sprite);
+			}
+			for (size_t i = 0; i < homingTargets.size(); i++)
+			{
+				homingTargets[i].update();
+				window.draw(homingTargets[i].sprite);
 			}
 
 			for (size_t i = 0; i < animations.size(); i++)
@@ -568,7 +692,16 @@ int main()
 					shootClock.restart();
 					player.alive = true;
 					enemies.clear();
-					player.sprite.setPosition(window.getSize().x / 2, window.getSize().y / 2);
+					int playerSpawnX;
+					int playerSpawnY;
+					do
+					{
+						playerSpawnX = rand() % window.getSize().x;
+						playerSpawnY = rand() % window.getSize().y;
+					} while (std::abs(playerSpawnX - boss.sprite.getPosition().x) > 500 && std::abs(playerSpawnY - boss.sprite.getPosition().y) > 500);
+
+
+					player.sprite.setPosition(playerSpawnX, playerSpawnY);
 				}
 			}
 			else
@@ -651,4 +784,42 @@ sf::Vector2f multiplyVector(sf::Vector2f left, sf::Vector2f right)
 	final.x = left.x * right.x;
 	final.y = left.y * right.y;
 	return final;
+}
+
+Enemy* find_nearest_enemy(sf::Vector2f pos) {
+	if (enemies.size() > 0)
+	{
+
+
+		Enemy* nearest = &enemies[0];
+		sf::Vector2f enemyPos = enemies[0].sprite.getPosition();
+		sf::Vector2f min = sf::Vector2f(std::abs(pos.x - enemyPos.x), std::abs(pos.y - enemyPos.y));
+		for (size_t i = 0; i < enemies.size(); i++)
+		{
+			enemyPos = enemies[i].sprite.getPosition();
+			if (std::abs(pos.x - enemyPos.x) < min.x && std::abs(pos.y - enemyPos.y) < min.y)
+			{
+				min = sf::Vector2f(std::abs(pos.x - enemyPos.x), std::abs(pos.y - enemyPos.y));
+				nearest = &enemies[i];
+			}
+		}
+		return nearest;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+void removeHomingMarkers(HomingTarget* tar) {
+	for (int i = 0; i < homingTargets.size(); i++)
+	{
+		std::cout << tar->id << " | " << homingTargets[i].id << '\n';
+		if (tar->id == homingTargets[i].id)
+		{
+			homingTargets.erase(homingTargets.begin() + i);
+			std::cout << "erase";
+			return;
+		}
+	}
 }

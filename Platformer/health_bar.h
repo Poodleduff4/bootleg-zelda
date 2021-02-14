@@ -17,12 +17,10 @@ public:
 	
 	void update(float currentHealth, float maxHealth) {
 		sprite.setScale(currentHealth / maxHealth, 1.f);
-		std::cout << sprite.getScale().x << '\n';
 	}
 
 	void reset(sf::Texture& t) {
 		sprite.setTexture(t);
 		sprite.setScale(1.f, 1.f);
 	}
-
 };

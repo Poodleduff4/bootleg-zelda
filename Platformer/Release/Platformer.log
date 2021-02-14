@@ -1,66 +1,421 @@
-﻿  Collision.cpp
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(70,15): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(71,16): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(73,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(73,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(74,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(74,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(136,42): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(137,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(137,42): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.cpp(138,47): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-  Platformer.cpp
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(19,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+﻿  Platformer.cpp
+  Note: including file: D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\iostream
+  Note: including file:  D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\yvals_core.h
+  Note: including file:   D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vcruntime.h
+  Note: including file:    D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\sal.h
+  Note: including file:     D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\concurrencysal.h
+  Note: including file:    D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vadefs.h
+  Note: including file:   D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xkeycheck.h
+  Note: including file:  D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\istream
+  Note: including file:   D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\ostream
+  Note: including file:    D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\ios
+  Note: including file:     D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xlocnum
+  Note: including file:      D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\climits
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\limits.h
+  Note: including file:      D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cmath
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\yvals.h
+  Note: including file:        D:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt.h
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vcruntime_new_debug.h
+  Note: including file:          D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vcruntime_new.h
+  Note: including file:        D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\crtdefs.h
+  Note: including file:        D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\use_ansi.h
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cstdlib
+  Note: including file:        D:\Windows Kits\10\Include\10.0.18362.0\ucrt\math.h
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h
+  Note: including file:        D:\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_malloc.h
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_search.h
+  Note: including file:          D:\Windows Kits\10\Include\10.0.18362.0\ucrt\stddef.h
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdlib.h
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xtr1common
+  Note: including file:      D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cstdio
+  Note: including file:       D:\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h
+  Note: including file:        D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdio.h
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h
+  Note: including file:      D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\streambuf
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xiosbase
+  Note: including file:        D:\Windows Kits\10\Include\10.0.18362.0\ucrt\share.h
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_share.h
+  Note: including file:        D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\system_error
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cerrno
+  Note: including file:          D:\Windows Kits\10\Include\10.0.18362.0\ucrt\errno.h
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\stdexcept
+  Note: including file:          D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\exception
+  Note: including file:           D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\type_traits
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xstddef
+  Note: including file:             D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cstddef
+  Note: including file:             D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list
+  Note: including file:           D:\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h
+  Note: including file:           D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vcruntime_exception.h
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\eh.h
+  Note: including file:             D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_terminate.h
+  Note: including file:          D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xstring
+  Note: including file:           D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\iosfwd
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cstring
+  Note: including file:             D:\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memory.h
+  Note: including file:               D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memcpy_s.h
+  Note: including file:                D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vcruntime_string.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstring.h
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cwchar
+  Note: including file:             D:\Windows Kits\10\Include\10.0.18362.0\ucrt\wchar.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wconio.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wctype.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wdirect.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wio.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wprocess.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wtime.h
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\sys/stat.h
+  Note: including file:               D:\Windows Kits\10\Include\10.0.18362.0\ucrt\sys/types.h
+  Note: including file:           D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cstdint
+  Note: including file:             D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\stdint.h
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\limits
+  Note: including file:             D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cfloat
+  Note: including file:              D:\Windows Kits\10\Include\10.0.18362.0\ucrt\float.h
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\new
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xatomic.h
+  Note: including file:             D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\intrin0.h
+  Note: including file:            D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xutility
+  Note: including file:             D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\utility
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xcall_once.h
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xerrc.h
+  Note: including file:        D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xlocale
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory
+  Note: including file:          D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\typeinfo
+  Note: including file:           D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vcruntime_typeinfo.h
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xfacet
+  Note: including file:         D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xlocinfo
+  Note: including file:          D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xlocinfo.h
+  Note: including file:           D:\Windows Kits\10\Include\10.0.18362.0\ucrt\ctype.h
+  Note: including file:           D:\Windows Kits\10\Include\10.0.18362.0\ucrt\locale.h
+  Note: including file: D:\SFML-2.5.1\include\SFML/Graphics.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Window.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/System.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Config.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Clock.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/Export.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/Time.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Err.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/FileInputStream.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/InputStream.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/NonCopyable.hpp
+  Note: including file:     D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string
+  Note: including file:      D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cctype
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Lock.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/MemoryInputStream.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Mutex.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Sleep.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/String.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/Utf.hpp
+  Note: including file:      D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\algorithm
+  Note: including file:      D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\locale
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xlocbuf
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xlocmes
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xlocmon
+  Note: including file:       D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xloctime
+  Note: including file:        D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\ctime
+  Note: including file:         D:\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h
+  Note: including file:      D:\SFML-2.5.1\include\SFML/System/Utf.inl
+  Note: including file:     D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\iterator
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/String.inl
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Thread.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/Thread.inl
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/ThreadLocal.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/ThreadLocalPtr.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/ThreadLocalPtr.inl
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Vector2.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/Vector2.inl
+  Note: including file:    D:\SFML-2.5.1\include\SFML/System/Vector3.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/System/Vector3.inl
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Window/Clipboard.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/Export.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Window/Context.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/GlResource.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/ContextSettings.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Window/Cursor.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Window/Event.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/Joystick.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/Keyboard.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/Mouse.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/Sensor.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Window/Touch.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Window/VideoMode.hpp
+  Note: including file:    D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Window/Window.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/WindowHandle.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Window/WindowStyle.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/BlendMode.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Graphics/Export.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/CircleShape.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Graphics/Shape.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Graphics/Drawable.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/Graphics/RenderStates.hpp
+  Note: including file:      D:\SFML-2.5.1\include\SFML/Graphics/Transform.hpp
+  Note: including file:       D:\SFML-2.5.1\include\SFML/Graphics/Rect.hpp
+  Note: including file:        D:\SFML-2.5.1\include\SFML/Graphics/Rect.inl
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Graphics/Transformable.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Graphics/VertexArray.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/Graphics/Vertex.hpp
+  Note: including file:      D:\SFML-2.5.1\include\SFML/Graphics/Color.hpp
+  Note: including file:     D:\SFML-2.5.1\include\SFML/Graphics/PrimitiveType.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/ConvexShape.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/Font.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Graphics/Glyph.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Graphics/Texture.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Graphics/Image.hpp
+  Note: including file:   D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\map
+  Note: including file:    D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\tuple
+  Note: including file:    D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xtree
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/RectangleShape.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/RenderTarget.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Graphics/View.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/RenderTexture.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/RenderWindow.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/Shader.hpp
+  Note: including file:   D:\SFML-2.5.1\include\SFML/Graphics/Glsl.hpp
+  Note: including file:    D:\SFML-2.5.1\include\SFML/Graphics/Glsl.inl
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/Sprite.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/Text.hpp
+  Note: including file:  D:\SFML-2.5.1\include\SFML/Graphics/VertexBuffer.hpp
+  Note: including file: D:\Windows Kits\10\Include\10.0.18362.0\um\Windows.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\shared\winapifamily.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\winpackagefamily.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\shared\sdkddkver.h
+  Note: including file:  D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\excpt.h
+  Note: including file:  D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\stdarg.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\shared\windef.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\specstrings.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\specstrings_strict.h
+  Note: including file:      D:\Windows Kits\10\Include\10.0.18362.0\shared\specstrings_undef.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\driverspecs.h
+  Note: including file:      D:\Windows Kits\10\Include\10.0.18362.0\shared\sdv_driverspecs.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\winnt.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\kernelspecs.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\basetsd.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\guiddef.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack2.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack2.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack2.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\apiset.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\ktmtypes.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winbase.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\apisetcconv.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\minwinbase.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\apiquery2.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\processenv.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\fileapifromapp.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\fileapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\debugapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\utilapiset.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\handleapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\errhandlingapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\fibersapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\namedpipeapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\profileapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\heapapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\ioapiset.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\synchapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\interlockedapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\processthreadsapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\sysinfoapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\memoryapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\enclaveapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\threadpoollegacyapiset.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\threadpoolapiset.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\jobapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\jobapi2.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\wow64apiset.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\libloaderapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\securitybaseapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\namespaceapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\systemtopologyapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\processtopologyapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\securityappcontainer.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\realtimeapiset.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\timezoneapi.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack2.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack2.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winuser.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack2.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\tvout.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winnls.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\datetimeapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\stringapiset.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\winnls.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\wincon.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\wincontypes.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi2.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi3.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winver.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\verrsrc.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winreg.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\reason.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winnetwk.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\wnnc.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\shared\cderr.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\dde.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\ddeml.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\dlgs.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\lzexpand.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\mmsystem.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\mciapi.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\mmiscapi.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\mmiscapi2.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\playsoundapi.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\mmeapi.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\timeapi.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\joystickapi.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\mmsyscom.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\nb30.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\shared\rpc.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\rpcdce.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\rpcdcep.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\rpcnsi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\rpcnterr.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\rpcasync.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\shellapi.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winperf.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winsock.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\inaddr.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\wincrypt.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\bcrypt.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\ncrypt.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\dpapi.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winefs.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winscard.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\wtypes.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\rpcndr.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\rpcnsip.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\rpcsal.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\wtypesbase.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\guiddef.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\winioctl.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\winsmcrd.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winspool.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\prsht.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\ole2.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\objbase.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\combaseapi.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\unknwnbase.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\objidlbase.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\guiddef.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\cguid.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\coml2api.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\objidl.h
+  Note: including file:      D:\Windows Kits\10\Include\10.0.18362.0\um\unknwn.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\propidlbase.h
+  Note: including file:      D:\Windows Kits\10\Include\10.0.18362.0\um\oaidl.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\urlmon.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\oleidl.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\servprov.h
+  Note: including file:     D:\Windows Kits\10\Include\10.0.18362.0\um\msxml.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\um\propidl.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\oleauto.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+  Note: including file:    D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\commdlg.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\prsht.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\shared\stralign.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\winsvc.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\mcx.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\um\imm.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\um\ime_cmodes.h
+  Note: including file: D:\Windows Kits\10\Include\10.0.18362.0\ucrt\math.h
+  Note: including file: C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h
+  Note: including file:  C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h
+  Note: including file:   D:\Windows Kits\10\Include\10.0.18362.0\ucrt\math.h
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(30,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(19,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(30,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(25,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(25,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(29,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(29,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
+  Note: including file:  C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\boss.h
+  Note: including file:   C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(21,24): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(25,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(25,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(51,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(52,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(57,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(58,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\boss.h(38,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
@@ -72,23 +427,108 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\boss.h(38,35): warning C4
               T=unsigned int
           ]
 C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\boss.h(75,34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(61,68): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(110,77): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(111,77): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(112,77): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(113,77): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(59,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(84,67): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(42,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(85,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(42,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(132,77): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(44,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(50,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(50,35): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(52,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(58,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(58,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Note: including file: C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\cursor.h
+  Note: including file:  D:\Windows Kits\10\Include\10.0.18362.0\ucrt\math.h
+  Note: including file: C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\player.h
+  Note: including file:  C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Weapon.h
+  Note: including file:   C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(67,68): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(68,61): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(120,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(121,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(122,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(123,77): warning C4305: 'argument': truncation from 'double' to 'float'
+  Note: including file: C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Collision.h
+  Note: including file: C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\health_bar.h
+  Note: including file: C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(28,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(28,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(36,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(36,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(72,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(72,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(73,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(81,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(81,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(83,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(90,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Homing.h(90,35): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(48,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(71,67): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(72,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(122,77): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -97,7 +537,7 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(132,77): w
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(132,48): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(122,48): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -106,139 +546,156 @@ C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(132,48): w
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(335,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(335,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(352,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(352,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(357,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(373,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(373,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(390,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(390,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(395,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(357,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(395,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(372,84): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(407,84): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(372,68): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(407,68): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(373,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(408,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(373,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(408,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(379,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(399,144): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(415,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(434,144): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(399,99): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(434,99): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(405,144): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(442,157): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(405,99): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(442,112): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(417,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(417,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(418,143): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(454,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(454,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(455,156): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(418,98): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(455,111): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(429,130): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(486,114): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(429,88): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(486,83): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(448,114): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(492,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(508,157): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(448,83): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(508,112): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(463,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(463,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(464,85): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(515,144): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(464,69): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(515,99): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(470,112): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(525,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(525,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(526,156): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(470,83): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(526,111): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(477,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(501,83): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(557,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(557,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(558,85): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(501,67): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(558,69): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(505,48): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(593,75): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(564,112): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
-              T=unsigned int
+              T=float
           ]
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(593,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(564,83): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
-              T=unsigned int
+              T=float
           ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(571,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(595,83): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(595,67): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(599,48): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(704,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(704,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(815,20): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 898 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1 of 1073 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Platformer.vcxproj -> C:\Users\Luke\Documents\C++ crap\Platformer\Release\Platformer.exe
+  Platformer.vcxproj -> C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.exe

@@ -3,7 +3,7 @@
 #include "Enemy.h"
 #include "Animation.h"
 #include "SFML/Graphics.hpp"
-extern std::vector<Projectile> enemyProjectiles;
+#include "projectile.h"
 extern sf::Vector2f playerCenter;
 extern sf::Vector2f mousePos;
 extern std::vector<AnimationEvent> animations;

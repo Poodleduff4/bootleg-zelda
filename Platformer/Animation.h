@@ -52,6 +52,12 @@ public:
 		y = Y;
 	}
 
+	AnimationEvent(Animation* a, int X, int Y) {
+		//anim = a;
+		x = X;
+		y = Y;
+	}
+
 	void draw(sf::RenderWindow& window) {
 		anim.sprite.setPosition(x, y);
 		window.draw(anim.sprite);

@@ -77,6 +77,12 @@
     <Image Include="type_A.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="homing_bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="homing_target.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="projectile.h">
@@ -104,6 +110,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Textures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Homing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

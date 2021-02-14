@@ -1,4 +1,5 @@
- #include "SFML/Graphics.hpp"
+#pragma once
+#include "SFML/Graphics.hpp"
 #include "Animation.h"
 #include "cursor.h"
 extern std::vector<sf::Texture> enemyDifficulty;
@@ -48,19 +49,25 @@ extern sf::Texture createMask(sf::Texture& texture);
 	sf::Texture boss_shoot_texture;
 	
 	sf::Texture energyBall_texture;
+
+	sf::Texture energyBall_projectile;
 	
 	sf::Texture bossHealthBar_texture;
 	
 	sf::Texture bossHealthBarMax_texture;
 	
+	sf::Texture homingBullet_texture;
+
+	sf::Texture homingMarker_texture;
 	
 	
 
 	//------------------ANIMATIONS------------------//
 	Animation sWalk(sprite_table, 5, 230, 53, 57, 10, 0.5);
 	Animation sEnergyBall(energyBall_texture, 20, 40, 110, 90, 9, 0.2);
-	Animation sExplosion_3(explosion, 0, 0, 256, 256, 48, 0.7);
-	Animation sExplosion_2(explosion2, 0, 0, 192, 192, 64, 0.5);
+	Animation sExplosion_3(explosion3, 0, 0, 256, 256, 48, 0.7);
+	Animation sExplosion_2(explosion2, 0, 0, 192, 192, 64, 1);
+	Animation sExplosion_1(explosion, 0, 0, 66, 50, 20, 1);
 	
 
 
@@ -97,14 +104,17 @@ extern sf::Texture createMask(sf::Texture& texture);
 		
 		sprite_table.loadFromFile("sprite_table.png");
 		sprite_table = createMask(sprite_table);
-		explosion.loadFromFile("type_C.png");
+		explosion.loadFromFile("type_A.png");
 		explosion2.loadFromFile("type_B.png");
-		explosion3.loadFromFile("type_A.png");
+		explosion3.loadFromFile("type_C.png");
 		boss_texture.loadFromFile("boss1.png");
 		boss_shoot_texture.loadFromFile("boss2.png");
 		energyBall_texture.loadFromFile("energyBall_straight.png");
+		energyBall_projectile.loadFromFile("energyBall_projectile.png");
 		bossHealthBar_texture.loadFromFile("health_bar.png");
 		bossHealthBarMax_texture.loadFromFile("health_bar_max.png");
+		homingBullet_texture.loadFromFile("homing_bullet.png");
+		homingMarker_texture.loadFromFile("homing_target.png");
 		
 		
 		playerDirections.push_back(Animation(sprite_table, 5, 344, 53, 57, 10, 0.2));//up

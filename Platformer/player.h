@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
+#include "Weapon.h"
 #define playerSpeed 5
 
 
@@ -14,6 +15,7 @@ public:
 	sf::Vector2f velocity;
 	float maxSpeed = playerSpeed;
 	bool alive = true;
+	Weapon *weapon;
 
 	Player(sf::Texture& t, sf::Vector2f pos) {
 		sprite.setPosition(pos.x, pos.y);

@@ -1,3 +1,267 @@
 ﻿  Platformer.cpp
-C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(7,11): warning C4101: 'playerPos': unreferenced local variable
-  Platformer.vcxproj -> C:\Users\Luke\Documents\C++ crap\Platformer\Debug\Platformer.exe
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(29,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Enemy.h(29,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(21,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(25,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(25,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(51,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(52,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(57,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Animation.h(58,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\boss.h(38,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\boss.h(38,35): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\boss.h(75,34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(38,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(38,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(40,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(46,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(46,35): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(48,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(54,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(54,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(75,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(75,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(83,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(83,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(90,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(90,35): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(65,68): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(66,61): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(117,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(118,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(119,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Textures.h(120,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(45,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(68,67): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(69,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(119,77): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(119,48): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(264,96): error C2664: 'Projectile::Projectile(Projectile &&)': cannot convert argument 1 from 'sf::Texture *' to 'sf::Texture &'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(35,2): message : see declaration of 'Projectile::Projectile'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(364,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(364,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(381,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(381,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(386,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(386,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(398,84): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(398,68): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(399,122): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(399,87): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(405,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(425,144): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(425,99): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(432,156): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(432,111): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(444,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(444,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(445,155): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(445,110): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(454,110): error C2664: 'Projectile::Projectile(Projectile &&)': cannot convert argument 4 from 'Animation *' to 'Animation &'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\projectile.h(35,2): message : see declaration of 'Projectile::Projectile'
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(455,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(476,114): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(476,83): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(481,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(497,144): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(497,99): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(504,156): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(504,111): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(514,156): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(514,111): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(530,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(530,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(531,85): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(531,69): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(537,112): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(537,83): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(544,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(568,83): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(568,67): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(572,48): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(671,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luke\Documents\C++ crap\Platformer\Platformer\Platformer.cpp(671,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
