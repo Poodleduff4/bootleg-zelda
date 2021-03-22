@@ -64,6 +64,8 @@ public:
 	char type[10];
 	HomingTarget marker;
 	int numUpdates = 0;
+	bool intro = true;
+	int introCount = 1;
 
 	Homing(sf::Texture& t, sf::Vector2f pos, Enemy* tar, int speed, Animation& a) {
 		target = tar;
@@ -91,7 +93,6 @@ public:
 	}
 
 	void update() {
-		
 			sf::Vector2f vecPath;
 			//std::cout << target->sprite.getPosition().x << " | " << target->sprite.getPosition().y << '\n';
 			if (strcmp(type, "boss") != 0 && target != nullptr)

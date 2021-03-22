@@ -36,18 +36,20 @@ public:
 
 	Projectile() {}
 
-	Projectile(sf::Texture& t, sf::Vector2f pos, int speed, Animation a) {
+	Projectile(sf::Texture& t, sf::Vector2f pos, int speed, Animation a, float scale = 1) {
 		sprite.setPosition(pos);
 		sprite.setTexture(t);
 		sprite.setOrigin(t.getSize().x / 2, t.getSize().y / 2);
+		sprite.setScale(sf::Vector2f(scale, scale));
 		anim = a;
 		maxSpeed = speed;
 	}
 
-	Projectile(sf::Texture* t, sf::Vector2f pos, int speed, Animation a) {
+	Projectile(sf::Texture* t, sf::Vector2f pos, int speed, Animation a, float scale = 1) {
 		sprite.setPosition(pos);
 		sprite.setTexture(*t);
 		sprite.setOrigin(t->getSize().x / 2, t->getSize().y / 2);
+		sprite.setScale(sf::Vector2f(scale, scale));
 		anim = a;
 		maxSpeed = speed;
 	}

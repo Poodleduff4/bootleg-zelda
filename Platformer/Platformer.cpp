@@ -33,6 +33,7 @@ std::vector<AnimationEvent> animations;
 std::vector<Animation> playerDirections;
 std::vector<sf::Texture> enemyDifficulty;
 std::vector<HomingTarget> homingTargets;
+std::vector<sf::Sprite> sprites;
 
 sf::Vector2f mousePos;
 sf::Vector2f playerCenter;
@@ -71,6 +72,8 @@ int main()
 	bossHealthBarFull.setOrigin(bossHealthBarMax_texture.getSize().x / 2, 0);
 	bossHealthBarFull.setPosition(window.getSize().x / 2, 10);
 
+	sf::Sprite weaponCharge;
+
 	//player.sprite.setTextureRect(playerDirections[1].frames[0]);
 
 	//--------------------PLAYER--------------------//
@@ -90,6 +93,7 @@ int main()
 
 	bool up, down, left, right;
 	up = down = left = right = false;
+	bool shootBool = false;
 
 	sf::Clock timer;
 
@@ -109,6 +113,8 @@ int main()
 	sf::Clock bossShootTimer;
 
 	sf::Clock weaponSwitchClock;
+
+	sf::Clock weaponChargeTime;
 
 	float animationFrame = 0.f;
 	bool first = true;
@@ -160,7 +166,8 @@ int main()
 		}
 		if (!paused)
 		{
-
+			window.clear();
+			window.draw(background);
 			char lastKey;
 			if (player.alive)
 			{
@@ -260,14 +267,33 @@ int main()
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && shootTime >= player.weapon->firerate)
 				{
-					if (strcmp(player.weapon->type, "homing") != 0)
+					if (player.weapon->type == 0)
 					{
 						aimDirNorm = getVectorPath(playerCenter, mousePos);
-						Projectile projectile(player.weapon->texture, playerCenter, player.weapon->speed, *player.weapon->animation);
+						Projectile projectile(player.weapon->texture, playerCenter, player.weapon->speed, *player.weapon->animation); 
 						projectile.velocity = aimDirNorm;
 						projectile.damage = player.weapon->damage;
 						playerProjectiles.push_back(projectile);
 						shootClock.restart();
+					}
+					else if (player.weapon->type == 1)
+					{
+						if (shootBool == false) { //just started pressing shoot
+							std::cout << "create\n";
+							weaponCharge.setTexture(energyBall_projectile);
+							weaponCharge.setOrigin(weaponCharge.getLocalBounds().width / 2, weaponCharge.getLocalBounds().height / 2);
+							weaponCharge.setPosition(playerCenter + getVectorPath(playerCenter, mousePos) * player.sprite.getLocalBounds().width);
+							weaponChargeTime.restart();
+							shootBool = true;
+						}
+						else //scaling the sprite to make the charge bigger
+						{
+							float scale = 1 + weaponChargeTime.getElapsedTime().asSeconds();
+							std::cout << "scale: " << scale << '\n';
+							weaponCharge.setScale(sf::Vector2f(scale, scale));
+							weaponCharge.setPosition(playerCenter + getVectorPath(playerCenter, mousePos) * player.sprite.getLocalBounds().width);
+						}
+						window.draw(weaponCharge);
 					}
 					else //homing projectile
 					{
@@ -306,6 +332,25 @@ int main()
 						}
 						std::cout << "shot\n";
 					}
+				}
+				else
+				{
+					if (shootBool == true)
+					{
+						aimDirNorm = getVectorPath(playerCenter, mousePos);
+						float scale = 1 + weaponChargeTime.getElapsedTime().asSeconds();
+						Projectile projectile(player.weapon->texture, weaponCharge.getPosition(), player.weapon->speed, *player.weapon->animation, scale);
+						projectile.velocity = aimDirNorm;
+						projectile.damage = player.weapon->damage * scale;
+						playerProjectiles.push_back(projectile);
+						weaponCharge = sf::Sprite();
+						shootClock.restart();
+					}
+					shootBool = false;
+				}
+				if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && shootBool == true)
+				{
+
 				}
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && triggerTime > 200)
@@ -423,9 +468,9 @@ int main()
 				}
 
 				//Enemy and projectile collision
-				for (size_t j = 0; j < enemies.size(); j++)
+				for (int j = 0; j < enemies.size(); j++)
 				{
-					if (playerProjectiles[i].sprite.getGlobalBounds().intersects(enemies[j].sprite.getGlobalBounds()))
+					if (enemies[j].sprite.getGlobalBounds().intersects(playerProjectiles[i].sprite.getGlobalBounds()))
 					{
 						enemies[j].health-=playerProjectiles[i].damage;
 						if (enemies[j].health <= 0)
@@ -441,6 +486,7 @@ int main()
 						{
 							animations.push_back(AnimationEvent(playerProjectiles[i].anim, playerProjectiles[i].sprite.getPosition().x, playerProjectiles[i].sprite.getPosition().y));
 						}
+						std::cout << "enemy hit\m";
 						killProjectile = true;
 					}
 				}
@@ -608,8 +654,7 @@ int main()
 				}
 			}
 
-			window.clear();
-			window.draw(background);
+			
 			if (player.alive)
 			{
 				player.update();
